@@ -90,6 +90,18 @@ img.storys {
   flex-direction: column;
 }
 
+form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+form li, ul {
+  width: 100%;
+}
+
 .allinputLogin {
   width: 43%;
   height: 100%;
@@ -98,26 +110,24 @@ img.storys {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
 }
 
 .allinputLogin span {
   font-size: 17px;
   color: var(--preto);
   font-weight: 600;
-  margin-bottom: 26px;
+ 
 }
 
 .allinputLogin form {
-  width: 100%;
+  width: 80%;
   height: auto;
- 
+ margin: 20px;
 
 }
 
-.allinputLogin input {
-  width: 90%;
-  height: 40px;
-}
+
 
 .allinputLogin ul,
 li {
@@ -127,6 +137,7 @@ li {
 }
 .allinputLogin input[type="email"],
 input[type="password"] {
+  width: 100%;
   background-color: #ffffff00;
   color: var(--cinza);
   padding: 10px 16px;
@@ -134,11 +145,21 @@ input[type="password"] {
   border-radius: 20px;
   margin-bottom: 12px;
   outline: none;
+  
 }
 
 .allinputLogin input:hover {
       outline: 1px solid var(--azulEscuro);
 }
+
+.allinputLogin input[type='submit'] {
+  width: 100%;
+  height: 50px;
+}
+
+
+
+
 
 footer {
   width: 100%;
