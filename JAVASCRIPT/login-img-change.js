@@ -1,8 +1,9 @@
-const box = document.querySelector('.center');
+const box = document.querySelector('.Imagejs');
 
 const imgF = document.createElement('img');
 imgF.classList.add('storys');
 box.appendChild(imgF);
+
 
 const images = [
     '/IMAGE/proImgage.png',
