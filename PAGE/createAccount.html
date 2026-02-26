@@ -23,50 +23,71 @@
       href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <div class="allForm">
-      <form>
+      <form class="fomrulario" >
         <ul>
-          <li>
-            <img src="/IMAGE/Meta-Logo.png" alt="meta Logo" width="80px" />
+          <li class="backpage">
+            <a href="/PAGE/login.html">
+              <i class="fa-solid fa-angle-left"></i> </a
+            ><img src="/IMAGE/Meta-Logo.png" alt="meta Logo" width="80px" />
           </li>
           <li><h1>Get started on Instagram</h1></li>
           <li>
-            <label for="acess">Mobile number or email adress</label>
+            <label>Mobile number or email adress</label>
             <input
               type="text"
-              name="acess"
-              class="id"
+              class="idDoEl"
               placeholder="Mobile number or email adress"
             />
+            <div class="exclamation">
+              <i
+                class="fa-solid fa-circle-exclamation"
+                style="color: #d31130"
+              ></i>
+              <span>Please enter a valid mobile number or email address.</span>
+            </div>
           </li>
           <li>
-            <label for="password">Password</label>
+            <label>Password</label>
             <input
               type="password"
-              name="password"
               class="passwordId"
               placeholder="Password"
             />
+            <div class="exclamation2">
+              <i
+                class="fa-solid fa-circle-exclamation"
+                style="color: #d31130"
+              ></i>
+              <span
+                >Enter a combination of at least six numbers, letters and
+               <br>punctuation marks (such as ! and &).</span
+              >
+            </div>
           </li>
           <li>
-            <label for="nameId">Name</label>
+            <label>Username</label>
             <input
               type="text"
-              name="nameId"
-              class="nameId"
-              placeholder="Name Last Name"
-            />
-          </li>
-          <li>
-            <label for="username">Username</label>
-            <input
-              type="text"
-              name="username"
               class="usernameId"
               placeholder="Username"
             />
+            <div class="exclamation3">
+              <i
+                class="fa-solid fa-circle-exclamation"
+                style="color: #d31130"
+              ></i>
+              <span>Please select a username for your account.</span>
+            </div>
           </li>
           <li>
             <p>
@@ -95,7 +116,6 @@
         </ul>
       </form>
     </div>
-
-    
   </body>
+  <script src="/JAVASCRIPT/login.js"></script>
 </html>

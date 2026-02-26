@@ -33,7 +33,7 @@ body {
 }
 
 .allPropaganda {
-  width: 67%;
+  width: 70%;
   height: 100%;
   border: 1px solid var(--cinzaClaro);
   max-width: 100%;
@@ -49,8 +49,6 @@ body {
   max-width: 80px;
   margin-top: 40px;
   margin-left: 40px;
-  display: block;
-
 }
 
 abbr {
@@ -81,6 +79,9 @@ abbr {
   max-width: 500px;
   width: 100%;
   margin: 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .Imagejs img {
@@ -99,7 +100,7 @@ abbr {
 }
 
 .allinputLogin {
-  width: 43%;
+  width: 30%;
   height: 100%;
   border: 1px solid var(--cinzaClaro);
   display: flex;
@@ -176,7 +177,7 @@ li input[type="submit"] {
   height: 44px;
   cursor: pointer;
   font-size: 15px;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 li a {
@@ -189,6 +190,7 @@ li a {
   justify-content: center;
   margin-top: 20px;
   margin-bottom: 20px;
+  font-weight: 600;
 }
 
 .fomrdiv button {
@@ -205,7 +207,7 @@ li a {
   text-decoration: none;
   color: var(--azulEscuro);
   font-size: 15px;
-  font-weight: 300;
+  font-weight: 600;
 }
 
 .fomrdiv img {
@@ -218,40 +220,52 @@ li a {
   justify-content: center;
 }
 
+
 footer {
   width: 100%;
-  height: 150px;
+  padding: 30px 20px;
+
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-  margin: 0;
-  padding: 0;
+  align-items: center;
+  gap: 20px;
+
+  font-size: 12px;
+  color: #8e8e8e;
+  font-weight: 200;
 }
 
-footer ul {
+/* Primeira lista (links principais) */
+footer ul:first-child {
   display: flex;
-  width: 100%;
-  height: 30%;
+  flex-wrap: wrap; /* ESSENCIAL */
+  justify-content: center;
+  gap: 10px 20px; /* linha / coluna */
+  list-style: none;
+  padding: 0;
+  max-width: 900px;
+}
+
+/* Segunda lista (idioma + copyright) */
+footer ul:last-child {
   display: flex;
-  align-items: center;
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
-footer li {
-  margin: 0;
-  padding: 0;
-  width: auto;
-  height: 20px;
-  margin: 10px;
-  list-style: none;
+/* Links */
+footer a {
+  text-decoration: none;
+  color: #8e8e8e;
+  transition: 0.3s;
 }
 
-footer a {
-  color: var(--cinza);
-  font-size: 12px;
-  text-decoration: none;
-  font-weight: 300;
+footer a:hover {
+  text-decoration: underline;
+  color: #555;
 }
 
 @media (max-width: 1000px) {
@@ -288,5 +302,18 @@ footer a {
   }
   .fomrdiv {
     width: 80%;
+  }
+}
+
+@media (max-height: 680px) {
+  .Imagejs img {
+    width: 70%;
+  }
+}
+
+@media (max-width: 400px) {
+  footer {
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
 }
