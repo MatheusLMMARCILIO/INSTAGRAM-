@@ -318,3 +318,14 @@ footer a:hover {
   }
 }
 /* erro account */
+
+.erroLogin {
+display: none;
+align-items: center;
+margin-bottom: 20px;
+}
+
+.erroLogin p {
+  color: #d31130;
+margin-left: 10px;
+}

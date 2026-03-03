@@ -11,18 +11,16 @@ if (formulario) {
   formulario.addEventListener("submit", createAccount);
 }
 
-const usuario = {
+function createAccount(e) {
+  e.preventDefault();
+
+  let usuariosSalvos = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+  const usuario = {
     acesso: acess.value,
     senha: password.value,
     nameDeUsuario: username.value,
   };
-
-function createAccount(e) {
-  e.preventDefault();
-
-  let usuariosSalvos = JSON.parse(localStorage.getItem("acesso")) || [];
-
-  
 
   if (
     !usuario.acesso.trim() ||
@@ -36,29 +34,42 @@ function createAccount(e) {
     exclamation.style.display = "none";
     exclamation2.style.display = "none";
     exclamation3.style.display = "none";
+
+ const existe = usuariosSalvos.some((u) => u.acesso === usuario.acesso);
+  if (existe) {
+     alert("Usuário já cadastrado!");
+     acess.focus()
+    return
+  }
     usuariosSalvos.push(usuario);
-    localStorage.setItem("acesso", JSON.stringify(usuariosSalvos));
+    localStorage.setItem("usuarios", JSON.stringify(usuariosSalvos));
     formulario.reset();
   }
+
+ 
 }
 
 // make login page
 
 const IDAcess = document.querySelector(".idpEmail");
 const passwordAcess = document.querySelector(".iptPassword");
-const btnAcess = document.querySelector('.iptSubmit')
-const form = document.querySelector('#formId')
- 
+const form = document.querySelector("#formPage");
+const errorLogin = document.querySelector(".erroLogin");
 
 function makeLogin() {
-
-  if (IDAcess == usuario.acesso && passwordAcess == usuario.senha) {
-    alert(`Parabéns, ${usuario.nameDeUsuario}! Você fez o login`)
+  const usuariosSalvos = JSON.parse(localStorage.getItem('usuarios')) || []
+  const usuarioEncontrado = usuariosSalvos.find(dados => dados.acesso === IDAcess.value && dados.senha === passwordAcess.value)
+  
+  if (usuarioEncontrado) {
+    alert(`Parabéns, ${usuarioEncontrado.nameDeUsuario}! Você fez o login`)
+errorLogin.style.display = 'none'
   } else {
-    
+    errorLogin.style.display = "flex";
   }
-
-
 
 }
 
+form.addEventListener("submit", (e) => {
+  e.preventDefault()
+  makeLogin()
+});
