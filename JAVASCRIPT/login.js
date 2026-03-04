@@ -61,8 +61,7 @@ function makeLogin() {
   const usuarioEncontrado = usuariosSalvos.find(dados => dados.acesso === IDAcess.value && dados.senha === passwordAcess.value)
   
   if (usuarioEncontrado) {
-    alert(`Parabéns, ${usuarioEncontrado.nameDeUsuario}! Você fez o login`)
-errorLogin.style.display = 'none'
+    location.href = 'http://127.0.0.1:5500/PAGE/InstagramPages/home.html'
   } else {
     errorLogin.style.display = "flex";
   }
