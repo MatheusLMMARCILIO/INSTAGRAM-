@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+}
+
+aside {
+  width: 15%;
+  height: 100vh;
+  background-color: beige;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 10px;
+  padding: 0;
+}
+
+.logo a {
+  display: none;
+  text-decoration: none;
+}
+
+.logo svg {
+  fill: black;
+}
+
+.logo:hover {
+  background-color: #0000001e;
+}
+
+.linksRolls {
+  width: 100%;
+  height: auto;
+  background-color: aqua;
+}
+
+.linksRolls ul {
+    width: 100%;
+    height: 100%;
+}
+
+.linksRolls li {
+  width: 28%;
+  height: 50px;
+  background-color: brown;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.linksRolls li:hover {
+    background-color: #0000001e;
+}
+
+.linksRolls span {
+    display: none;
+}
+
+.linksRolls svg {
+  margin-right: 10px;
+}
+
+.elUl li {
+  width: 28%;
+  transition: 0.3s;
+}
+
+.elUl span {
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.elUl.active li {
+  width: 100%;
+}
+
+.elUl.active span {
+  opacity: 1;
+}
