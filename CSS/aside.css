@@ -1,3 +1,4 @@
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -10,15 +11,29 @@ body {
   height: 100vh;
 }
 
+
 aside {
-  width: 15%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80px;
   height: 100vh;
-  background-color: beige;
   display: flex;
-  align-items: center;
-  justify-content: space-around;
+  align-items: flex-start;
+  justify-content: space-between;
   flex-direction: column;
+  padding-left: 20px;
+  transition: width 0.3s ease;
+  overflow: hidden;
+  z-index: 1000;
+  padding: 20px 20px;
+  background-color: white;
 }
+
+aside:hover {
+  width: 220px;
+}
+
 
 .logo {
   width: 50px;
@@ -26,9 +41,8 @@ aside {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: none;
   border-radius: 10px;
-  padding: 0;
+  cursor: pointer;
 }
 
 .logo a {
@@ -44,57 +58,74 @@ aside {
   background-color: #0000001e;
 }
 
+
+aside:hover .logo a {
+  display: block;
+  margin-left: 10px;
+}
+
+
 .linksRolls {
   width: 100%;
-  height: auto;
-  background-color: aqua;
 }
 
 .linksRolls ul {
-    width: 100%;
-    height: 100%;
-}
-
-.linksRolls li {
-  width: 28%;
-  height: 50px;
-  background-color: brown;
-  list-style: none;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  margin-bottom: 10px;
-  border: none;
-  border-radius: 10px;
-  padding: 20px;
-}
-
-.linksRolls li:hover {
-    background-color: #0000001e;
-}
-
-.linksRolls span {
-    display: none;
-}
-
-.linksRolls svg {
-  margin-right: 10px;
-}
-
-.elUl li {
-  width: 28%;
-  transition: 0.3s;
-}
-
-.elUl span {
-  opacity: 0;
-  transition: 0.3s;
-}
-
-.elUl.active li {
   width: 100%;
 }
 
-.elUl.active span {
+
+.linksRolls li {
+  width: 28%; 
+  height: 50px;
+  background-color: transparent;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+
+aside:hover .linksRolls li {
+  width: 100%;
+}
+
+
+.linksRolls li:hover {
+  background-color: #0000001e;
+}
+
+
+.linksRolls svg {
+  min-width: 24px;
+}
+
+
+.linksRolls span {
+  opacity: 0;
+  margin-left: 10px;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+
+aside:hover .linksRolls span {
   opacity: 1;
+  transform: translateX(0);
+}
+
+.btnMore {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btnMore:hover {
+    background-color: #0000001e;
 }
