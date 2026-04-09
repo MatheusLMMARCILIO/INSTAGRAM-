@@ -25,9 +25,13 @@ aside {
   padding-left: 20px;
   transition: width 0.3s ease;
   overflow: hidden;
-  z-index: 1000;
+  z-index: 100;
   padding: 20px 20px;
   background-color: white;
+}
+
+body.dark aside{
+background-color: black;
 }
 
 aside:hover {
@@ -97,6 +101,19 @@ aside:hover .linksRolls li {
   background-color: #0000001e;
 }
 
+li a {
+  font-size: 15px;
+  color: var(--preto);
+  font-weight: bolder;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
 
 .linksRolls svg {
   min-width: 24px;
@@ -109,6 +126,7 @@ aside:hover .linksRolls li {
   transform: translateX(-10px);
   transition: all 0.3s ease;
   white-space: nowrap;
+  color: black;
 }
 
 
