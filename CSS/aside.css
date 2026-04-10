@@ -11,6 +11,9 @@ body {
   height: 100vh;
 }
 
+body.dark {
+  background-color: #0c1014;
+}
 
 aside {
   position: fixed;
@@ -30,14 +33,13 @@ aside {
   background-color: white;
 }
 
-body.dark aside{
-background-color: black;
+body.dark aside {
+  background-color: #0c1014;
 }
 
 aside:hover {
   width: 220px;
 }
-
 
 .logo {
   width: 50px;
@@ -58,16 +60,18 @@ aside:hover {
   fill: black;
 }
 
+body.dark .logo svg {
+  fill: white;
+}
+
 .logo:hover {
   background-color: #0000001e;
 }
-
 
 aside:hover .logo a {
   display: block;
   margin-left: 10px;
 }
-
 
 .linksRolls {
   width: 100%;
@@ -77,9 +81,8 @@ aside:hover .logo a {
   width: 100%;
 }
 
-
 .linksRolls li {
-  width: 28%; 
+  width: 28%;
   height: 50px;
   background-color: transparent;
   list-style: none;
@@ -91,14 +94,16 @@ aside:hover .logo a {
   transition: all 0.3s ease;
 }
 
-
 aside:hover .linksRolls li {
   width: 100%;
 }
 
-
 .linksRolls li:hover {
   background-color: #0000001e;
+}
+
+body.dark .linksRolls li:hover {
+  background-color: #ffffff1e;
 }
 
 li a {
@@ -114,11 +119,17 @@ li a {
   font-weight: 600;
 }
 
+body.dark .elUl svg{
+  fill: #ffffff;
+}
+
+body.dark .elUl span {
+  color: #ffffff;
+}
 
 .linksRolls svg {
   min-width: 24px;
 }
-
 
 .linksRolls span {
   opacity: 0;
@@ -129,7 +140,6 @@ li a {
   color: black;
 }
 
-
 aside:hover .linksRolls span {
   opacity: 1;
   transform: translateX(0);
@@ -138,12 +148,25 @@ aside:hover .linksRolls span {
 .btnMore {
   width: 50px;
   height: 50px;
-  background-color: white;
   border: none;
   border-radius: 10px;
   cursor: pointer;
 }
 
-.btnMore:hover {
-    background-color: #0000001e;
+.body.dark .btnMore li, svg, a, span {
+  fill: white;
+  color: white;
 }
+
+.btnMore:hover {
+  background-color: #0000001e;
+}
+
+body.dark .btnMore {
+  background-color: #0c1014;
+}
+
+body.dark .btnMore:hover {
+  background-color: #ffffff1e;
+}
+
