@@ -9,10 +9,13 @@
 body {
   width: 100%;
   height: 100vh;
+  background-color: #ffffff;
+  color: #000;
 }
 
 body.dark {
   background-color: #0c1014;
+  color: #ffffff;
 }
 
 aside {
@@ -25,12 +28,11 @@ aside {
   align-items: flex-start;
   justify-content: space-between;
   flex-direction: column;
-  padding-left: 20px;
   transition: width 0.3s ease;
   overflow: hidden;
   z-index: 100;
   padding: 20px 20px;
-  background-color: white;
+  background-color: #ffffff;
 }
 
 body.dark aside {
@@ -54,6 +56,11 @@ aside:hover {
 .logo a {
   display: none;
   text-decoration: none;
+  color: black;
+}
+
+body.dark .logo a {
+  color: white;
 }
 
 .logo svg {
@@ -66,6 +73,10 @@ body.dark .logo svg {
 
 .logo:hover {
   background-color: #0000001e;
+}
+
+body.dark .logo:hover {
+  background-color: #ffffff1e;
 }
 
 aside:hover .logo a {
@@ -81,6 +92,7 @@ aside:hover .logo a {
   width: 100%;
 }
 
+
 .linksRolls li {
   width: 28%;
   height: 50px;
@@ -92,6 +104,7 @@ aside:hover .logo a {
   border-radius: 10px;
   padding: 10px;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 aside:hover .linksRolls li {
@@ -108,8 +121,7 @@ body.dark .linksRolls li:hover {
 
 li a {
   font-size: 15px;
-  color: var(--preto);
-  font-weight: bolder;
+  color: black;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -117,18 +129,28 @@ li a {
   margin-top: 20px;
   margin-bottom: 20px;
   font-weight: 600;
+
 }
 
-body.dark .elUl svg{
-  fill: #ffffff;
+body.dark li a {
+  color: white;
+}
+
+body.dark .elUl svg {
+  fill: white;
 }
 
 body.dark .elUl span {
-  color: #ffffff;
+  color: white;
 }
 
 .linksRolls svg {
   min-width: 24px;
+  fill: black;
+}
+
+body.dark .linksRolls svg {
+  fill: white;
 }
 
 .linksRolls span {
@@ -138,6 +160,10 @@ body.dark .elUl span {
   transition: all 0.3s ease;
   white-space: nowrap;
   color: black;
+}
+
+body.dark .linksRolls span {
+  color: white;
 }
 
 aside:hover .linksRolls span {
@@ -151,11 +177,21 @@ aside:hover .linksRolls span {
   border: none;
   border-radius: 10px;
   cursor: pointer;
+  background-color: transparent;
 }
 
-.body.dark .btnMore li, svg, a, span {
+body.dark .btnMore svg,
+body.dark .btnMore span,
+body.dark .btnMore a {
   fill: white;
   color: white;
+}
+
+body:not(.dark) .btnMore svg,
+body:not(.dark) .btnMore span,
+body:not(.dark) .btnMore a {
+  fill: black;
+  color: black;
 }
 
 .btnMore:hover {

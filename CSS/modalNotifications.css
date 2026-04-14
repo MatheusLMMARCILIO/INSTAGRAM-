@@ -1,0 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+.modalNotifications {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 10000;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.modalNot {
+  width: 25%;
+  height: 100%;
+  background-color: #fff;
+  border-right: 2px solid #bcc0c4;
+}
+
+body.dark .modalNot {
+  background-color: #0c1014;
+  border-right: 2px solid #ffffff;
+}
+
+.exitNot {
+  width: 100%;
+  height: 50px;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+
+.exitNot span {
+    color: black;
+    cursor: pointer;
+}
+
+body.dark .exitNot span {
+  color: white;
+}
+
+.textNot {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+body.dark .textNot span {
+  color: white;
+}
+
+.body.dark .textNot h1 {
+  color: white;
+}
