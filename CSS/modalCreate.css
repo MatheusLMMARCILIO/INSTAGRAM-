@@ -26,7 +26,7 @@
 }
 
 body.dark .create {
-    background-color: #0c1014;
+  background-color: #0c1014;
 }
 
 .exitbtn {
@@ -38,32 +38,34 @@ body.dark .create {
   padding-right: 15px;
 }
 
-.exitBtnExit span {
-    color: black;
+.exitBtnExit {
+  cursor: pointer;
+  color: black;
 }
 
 body.dark .exitBtnExit span {
-    color: white;
+  color: white;
 }
 
 .btnPost {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .btnPost button {
-margin-top: 10px;
-width: 150px;
-height: 25px;
-background-color: #0064e0;
-border: none;
-border-radius: 8px;
-color: white;
-font-weight: bold;
+  margin-top: 10px;
+  width: 150px;
+  height: 25px;
+  background-color: #0064e0;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 body.dark .btnPost svg {
-    fill: white;
+  fill: white;
 }
