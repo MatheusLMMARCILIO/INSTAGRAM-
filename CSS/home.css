@@ -51,7 +51,7 @@ body {
 }
 
 .topPost {
-  width:100%;
+  width: 100%;
   max-width: 600px;
   height: auto;
   display: flex;
@@ -59,16 +59,14 @@ body {
   justify-content: flex-start;
   flex-direction: row;
   padding-left: 15px;
-  
 }
 
 .topPost img {
   width: 40px;
-
 }
 
 .topPost a {
- display: flex;
+  display: flex;
   align-items: center;
   justify-content: flex-start;
   text-decoration: none;
@@ -82,12 +80,45 @@ body {
 }
 
 .middle img {
-  width: 600px;
-border-radius: 10px;
+  width: 450px;
+  border-radius: 10px;
 }
-
 
 body.dark .topPost span {
   color: white;
 }
 
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  background-color: #0064e0;
+  padding-left: 15px;
+  cursor: pointer;
+}
+
+.like,
+.comment,
+.share,
+.sendMenssage {
+  padding-right: 10px;
+  
+}
+
+
+.bottom svg {
+  fill: black;
+  
+}
+
+body.dark .bottom svg{
+  fill: white;
+}
+
+.liked svg {
+  fill: red;
+}
+.liked {
+  background: yellow;
+}
