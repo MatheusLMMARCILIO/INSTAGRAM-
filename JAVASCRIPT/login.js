@@ -15,8 +15,7 @@ function createAccount(e) {
   e.preventDefault();
 
   let usuariosSalvos = JSON.parse(localStorage.getItem("usuarios")) || [];
-
-  const usuario = {
+ const usuario = {
     acesso: acess.value,
     senha: password.value,
     nameDeUsuario: username.value,

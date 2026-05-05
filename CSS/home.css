@@ -25,10 +25,8 @@ body {
 }
 
 .pageHome {
-  position: static;
   width: 100%;
   max-width: 800px;
-  z-index: -10;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -93,9 +91,7 @@ body.dark .topPost span {
   align-items: center;
   justify-content: flex-start;
   flex-direction: row;
-  background-color: #0064e0;
   padding-left: 15px;
-  cursor: pointer;
 }
 
 .like,
@@ -103,8 +99,10 @@ body.dark .topPost span {
 .share,
 .sendMenssage {
   padding-right: 10px;
+  cursor: pointer;
   
 }
+
 
 
 .bottom svg {
@@ -116,9 +114,37 @@ body.dark .bottom svg{
   fill: white;
 }
 
-.liked svg {
+.liked path {
   fill: red;
 }
-.liked {
-  background: yellow;
+
+.commentPost {
+  width: 100%;
+  height: auto;
+  padding-top: 10px;  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.commentPost span {
+  height: auto;
+  color: #000000;
+  font-weight: bolder;
+  padding-right :7px;
+}
+
+.commentPost ul,
+.commentPost li {
+  width: 96%;
+}
+
+body.dark .commentPost span {
+  color: white;
+}
+
+body.dark .commentPost li {
+  color: white;
+  margin: 15px 15px;
 }

@@ -46,7 +46,6 @@ if (temaSalvo === "dark") {
 }
 }
 
-
 function modalPost() {
     const showModal = document.querySelector('.createModal')
 const modal = document.querySelector('.modalCreate')
@@ -77,8 +76,25 @@ exitbtn.addEventListener('click', () => {
 })
 }
 
+function Modalcomment() {
+  const exit = document.querySelector('.XXXexit')
+  const modal = document.querySelector('.commentModal')
+const btn = document.querySelector('.comment')
+
+btn.addEventListener('click', () => {
+  modal.style.display = 'flex'
+})
+
+exit.addEventListener('click', () => {
+  modal.style.display = 'none'
+})
+
+
+
+}
 
 
 modalPost()
 modalNoti()
 modalExit()
+Modalcomment()

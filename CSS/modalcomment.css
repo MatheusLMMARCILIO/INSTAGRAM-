@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}
+
+
+.commentModal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 10000;
+  background-color: #00000041;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  
+}
+
+.XXXexit span {
+  color: black;
+  cursor: pointer!important;
+}
+
+body.dark .XXXexit span {
+  color: white;
+}
+
+.commentT {
+  width: 400px;
+  height: 40px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  padding: 0px 10px;
+  margin: 30px;
+  cursor: auto;
+}
+
+body.dark .commentT {
+  background-color: #0c1014;
+}
+
+body.dark .commentT input {
+  color: white;
+}
+.commentT input {
+  width: 80%;
+  height: 70%;
+  color: black;
+border: 1px solid black;
+border-bottom-left-radius: 20px;
+border-top-left-radius: 20px;
+border-right: none ;
+padding-left: 15px;
+}
+
+body.dark .commentT input {
+  background-color: #0c1014;
+  border: 1px solid white;
+}
+
+
+.commentT button {
+  width: 20%;
+  height: 70%;
+  border: 1px solid black;
+  border-bottom-right-radius:20px ;
+  border-top-right-radius:20px ;
+background-color: #0064e0;
+color: white;
+font-weight: bold;
+border-left: none;
+font-size: 11px;
+cursor: pointer;
+}
+
+.commentT button:hover {
+  outline: none;
+}
+
