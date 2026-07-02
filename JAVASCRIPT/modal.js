@@ -1,100 +1,79 @@
 function modalExit() {
-    const button = document.querySelector(".btnMore");
-const Modal = document.querySelector(".ModalExit");
-const exit = document.querySelector(".exit");
-const LogOt = document.querySelector("#LogOt");
-const Switch = document.querySelector("#Switch");
- const svgChange = document.querySelector(".svgChange svg");
- 
+  const button = document.querySelector(".btnMore");
+  const Modal = document.querySelector(".allModal");
+  const exit = document.querySelector(".exit");
+  const LogOt = document.querySelector("#LogOt");
+  const Switch = document.querySelector("#Switch");
+  const svgChange = document.querySelector(".svgChange svg");
 
-button.addEventListener("click", () => {
-  Modal.style.display = "flex";
-});
+  button.addEventListener("click", () => {
+    Modal.style.display = "flex";
+  });
 
-exit.addEventListener("click", () => {
-  Modal.style.display = "none";
-});
+  exit.addEventListener("click", () => {
+    Modal.style.display = "none";
+  });
 
-LogOt.addEventListener("click", () => {
-  window.location.replace("http://127.0.0.1:5500/PAGE/login.html");
-});
+  LogOt.addEventListener("click", () => {
+    window.location.replace("http://127.0.0.1:5500/PAGE/login.html");
+  });
 
-Switch.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
+  Switch.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
 
-  if (document.body.classList.contains("dark")) {
-    localStorage.setItem("tema", "dark");
+    if (document.body.classList.contains("dark")) {
+      localStorage.setItem("tema", "dark");
+      svgChange.innerHTML =
+        '<svg aria-label="Theme icon" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="18" role="img" viewBox="0 0 24 24" width="18"><title>Theme icon</title><path d="M12.00018,4.5a1,1,0,0,0,1-1V2a1,1,0,0,0-2,0V3.5A1.00005,1.00005,0,0,0,12.00018,4.5ZM5.28241,6.69678A.99989.99989,0,1,0,6.69647,5.28271l-1.06054-1.061A.99989.99989,0,0,0,4.22186,5.63574ZM4.50018,12a1,1,0,0,0-1-1h-1.5a1,1,0,0,0,0,2h1.5A1,1,0,0,0,4.50018,12Zm.78223,5.30322-1.06055,1.061a.99989.99989,0,1,0,1.41407,1.41406l1.06054-1.061a.99989.99989,0,0,0-1.41406-1.41407ZM12.00018,19.5a1.00005,1.00005,0,0,0-1,1V22a1,1,0,0,0,2,0V20.5A1,1,0,0,0,12.00018,19.5Zm6.71729-2.19678a.99989.99989,0,0,0-1.41406,1.41407l1.06054,1.061A.99989.99989,0,0,0,19.778,18.36426ZM22.00018,11h-1.5a1,1,0,0,0,0,2h1.5a1,1,0,0,0,0-2ZM18.01044,6.98975a.996.996,0,0,0,.707-.293l1.06055-1.061A.99989.99989,0,0,0,18.364,4.22168l-1.06054,1.061a1,1,0,0,0,.707,1.707ZM12.00018,6a6,6,0,1,0,6,6A6.00657,6.00657,0,0,0,12.00018,6Zm0,10a4,4,0,1,1,4-4A4.00458,4.00458,0,0,1,12.00018,16Z"></path></svg>';
+    } else {
+      localStorage.setItem("tema", "light");
+      svgChange.innerHTML =
+        '<svg aria-label="Theme icon" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="18" role="img" viewBox="0 0 24 24" width="18"><title>Theme icon</title><path d="M11.502,22.99805A11.4313,11.4313,0,0,1,.49512,14.83691a.99889.99889,0,0,1,.251-.998,1.01148,1.01148,0,0,1,.99707-.249,9.43041,9.43041,0,0,0,2.75879.40821A9.5082,9.5082,0,0,0,13.5957,1.74023a1.00039,1.00039,0,0,1,1.24707-1.248A11.501,11.501,0,0,1,11.502,22.99805ZM3.08984,15.91211A9.49991,9.49991,0,0,0,21.002,11.498,9.57875,9.57875,0,0,0,15.916,3.08594,11.5083,11.5083,0,0,1,3.08984,15.91211Z"></path></svg>';
+    }
+  });
+
+  const temaSalvo = localStorage.getItem("tema");
+
+  if (temaSalvo === "dark") {
+    document.body.classList.add("dark");
     svgChange.innerHTML =
       '<svg aria-label="Theme icon" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="18" role="img" viewBox="0 0 24 24" width="18"><title>Theme icon</title><path d="M12.00018,4.5a1,1,0,0,0,1-1V2a1,1,0,0,0-2,0V3.5A1.00005,1.00005,0,0,0,12.00018,4.5ZM5.28241,6.69678A.99989.99989,0,1,0,6.69647,5.28271l-1.06054-1.061A.99989.99989,0,0,0,4.22186,5.63574ZM4.50018,12a1,1,0,0,0-1-1h-1.5a1,1,0,0,0,0,2h1.5A1,1,0,0,0,4.50018,12Zm.78223,5.30322-1.06055,1.061a.99989.99989,0,1,0,1.41407,1.41406l1.06054-1.061a.99989.99989,0,0,0-1.41406-1.41407ZM12.00018,19.5a1.00005,1.00005,0,0,0-1,1V22a1,1,0,0,0,2,0V20.5A1,1,0,0,0,12.00018,19.5Zm6.71729-2.19678a.99989.99989,0,0,0-1.41406,1.41407l1.06054,1.061A.99989.99989,0,0,0,19.778,18.36426ZM22.00018,11h-1.5a1,1,0,0,0,0,2h1.5a1,1,0,0,0,0-2ZM18.01044,6.98975a.996.996,0,0,0,.707-.293l1.06055-1.061A.99989.99989,0,0,0,18.364,4.22168l-1.06054,1.061a1,1,0,0,0,.707,1.707ZM12.00018,6a6,6,0,1,0,6,6A6.00657,6.00657,0,0,0,12.00018,6Zm0,10a4,4,0,1,1,4-4A4.00458,4.00458,0,0,1,12.00018,16Z"></path></svg>';
   } else {
-    localStorage.setItem("tema", "light");
     svgChange.innerHTML =
       '<svg aria-label="Theme icon" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="18" role="img" viewBox="0 0 24 24" width="18"><title>Theme icon</title><path d="M11.502,22.99805A11.4313,11.4313,0,0,1,.49512,14.83691a.99889.99889,0,0,1,.251-.998,1.01148,1.01148,0,0,1,.99707-.249,9.43041,9.43041,0,0,0,2.75879.40821A9.5082,9.5082,0,0,0,13.5957,1.74023a1.00039,1.00039,0,0,1,1.24707-1.248A11.501,11.501,0,0,1,11.502,22.99805ZM3.08984,15.91211A9.49991,9.49991,0,0,0,21.002,11.498,9.57875,9.57875,0,0,0,15.916,3.08594,11.5083,11.5083,0,0,1,3.08984,15.91211Z"></path></svg>';
   }
-});
-
-const temaSalvo = localStorage.getItem("tema");
-
-if (temaSalvo === "dark") {
-  document.body.classList.add("dark");
-  svgChange.innerHTML =
-    '<svg aria-label="Theme icon" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="18" role="img" viewBox="0 0 24 24" width="18"><title>Theme icon</title><path d="M12.00018,4.5a1,1,0,0,0,1-1V2a1,1,0,0,0-2,0V3.5A1.00005,1.00005,0,0,0,12.00018,4.5ZM5.28241,6.69678A.99989.99989,0,1,0,6.69647,5.28271l-1.06054-1.061A.99989.99989,0,0,0,4.22186,5.63574ZM4.50018,12a1,1,0,0,0-1-1h-1.5a1,1,0,0,0,0,2h1.5A1,1,0,0,0,4.50018,12Zm.78223,5.30322-1.06055,1.061a.99989.99989,0,1,0,1.41407,1.41406l1.06054-1.061a.99989.99989,0,0,0-1.41406-1.41407ZM12.00018,19.5a1.00005,1.00005,0,0,0-1,1V22a1,1,0,0,0,2,0V20.5A1,1,0,0,0,12.00018,19.5Zm6.71729-2.19678a.99989.99989,0,0,0-1.41406,1.41407l1.06054,1.061A.99989.99989,0,0,0,19.778,18.36426ZM22.00018,11h-1.5a1,1,0,0,0,0,2h1.5a1,1,0,0,0,0-2ZM18.01044,6.98975a.996.996,0,0,0,.707-.293l1.06055-1.061A.99989.99989,0,0,0,18.364,4.22168l-1.06054,1.061a1,1,0,0,0,.707,1.707ZM12.00018,6a6,6,0,1,0,6,6A6.00657,6.00657,0,0,0,12.00018,6Zm0,10a4,4,0,1,1,4-4A4.00458,4.00458,0,0,1,12.00018,16Z"></path></svg>';
-} else {
-    svgChange.innerHTML =
-      '<svg aria-label="Theme icon" class="x1lliihq x1n2onr6 x5n08af" fill="currentColor" height="18" role="img" viewBox="0 0 24 24" width="18"><title>Theme icon</title><path d="M11.502,22.99805A11.4313,11.4313,0,0,1,.49512,14.83691a.99889.99889,0,0,1,.251-.998,1.01148,1.01148,0,0,1,.99707-.249,9.43041,9.43041,0,0,0,2.75879.40821A9.5082,9.5082,0,0,0,13.5957,1.74023a1.00039,1.00039,0,0,1,1.24707-1.248A11.501,11.501,0,0,1,11.502,22.99805ZM3.08984,15.91211A9.49991,9.49991,0,0,0,21.002,11.498,9.57875,9.57875,0,0,0,15.916,3.08594,11.5083,11.5083,0,0,1,3.08984,15.91211Z"></path></svg>';
-
 }
-}
+modalExit();
 
-function modalPost() {
-    const showModal = document.querySelector('.createModal')
-const modal = document.querySelector('.modalCreate')
-const exit = document.querySelector('.exitbtn')
+function btnReactions() {
+  function like() {
+    const likeSvg = document.querySelector(".btnLike path");
 
-showModal.addEventListener('click', () => {
-    modal.style.display = 'flex'
-})
+    const likeSalvo = localStorage.getItem("likeSalvo");
 
-exit.addEventListener('click', () => {
-     modal.style.display = 'none'
-})
+    if (likeSalvo === "true") {
+      likeSvg.classList.add("liked");
+    }
 
-}
+    likeSvg.addEventListener("click", () => {
+      likeSvg.classList.toggle("liked");
 
-function modalNoti() {
-    const show = document.querySelector('.NotificationModal')
-const modal = document.querySelector('.modalNotifications')
-const exitbtn = document.querySelector('.exitexit')
+      localStorage.setItem("likeSalvo", likeSvg.classList.contains("liked"));
+    });
+  }
 
+  like();
 
-show.addEventListener('click', () => {
-   modal.style.display = 'flex'
-})
+  function share() {
+    const btnShare = document.querySelector(".btnShare");
+    const shareNum = document.querySelector(".shareNum");
 
-exitbtn.addEventListener('click', () => {
-    modal.style.display = 'none'
-})
+    btnShare.addEventListener("click", () => {
+
+    });
+  }
+
+  share();
 }
 
-function Modalcomment() {
-  const exit = document.querySelector('.XXXexit')
-  const modal = document.querySelector('.commentModal')
-const btn = document.querySelector('.comment')
-
-btn.addEventListener('click', () => {
-  modal.style.display = 'flex'
-})
-
-exit.addEventListener('click', () => {
-  modal.style.display = 'none'
-})
-
-
-
-}
-
-
-modalPost()
-modalNoti()
-modalExit()
-Modalcomment()
+btnReactions();

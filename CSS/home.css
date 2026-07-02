@@ -15,107 +15,145 @@
   --azulEscuro: #0064e0;
 }
 
-body {
-  width: 100%;
+.pageHome {
 
-  height: auto;
+  position: absolute;
+  z-index: -10;
+  padding-left: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  padding-left: 80px;
 }
 
-.pageHome {
+.storys {
+  margin-top: 20px;
+  margin-left: 80px;
+  width: 550px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: row;
+
+}
+
+.storys img {
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.storys p {
+  color: var(--cinza);
+  font-weight: bolder;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+body.dark p {
+  color: var(--branco);
+
+}
+
+.pagePost {
+  margin-top: 40px;
   width: 100%;
-  max-width: 800px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
 }
 
-.left {
-  width: 100%;
+.me {
+  width: 85px;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
 }
 
-.story img {
-  width: 150px;
-  height: auto;
-  cursor: pointer;
-}
-
-.topPost {
-  width: 100%;
-  max-width: 600px;
-  height: auto;
+.myself {
+  width: 500px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  flex-direction: row;
   padding-left: 15px;
 }
 
-.topPost img {
-  width: 40px;
+.myself img {
+  width: 35px;
+  height: 32px;
+  border-radius: 50px;
+
 }
 
-.topPost a {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  text-decoration: none;
-}
-
-.topPost span {
-  color: black;
-  font-weight: bolder;
+.myself p {
+  color: var(--preto);
   padding-left: 10px;
-  cursor: pointer;
 }
 
-.middle img {
-  width: 450px;
-  border-radius: 10px;
-  margin: 15px 15px;
-}
-
-body.dark .topPost span {
+body.dark .myself p {
   color: white;
 }
 
-.bottom {
+.postPhoto img{
+  width: 500px;
+  height: auto;
+border-radius: 5px;
+}
+
+.buttonsReaction ul{
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: start;
   flex-direction: row;
-  padding-left: 15px;
 }
 
-.like,
-.comment,
-.share,
-.sendMenssage {
-  padding-right: 10px;
+.buttonsReaction li {
+  display: inline-flex;
+padding: 0px 2.5px;
+}
+
+.buttonsReaction span {
+  color: var(--preto);
+  padding: 0px 2.5px;
+}
+
+body.dark .buttonsReaction span {
+  color: white;
+}
+
+.buttonsReaction {
+  fill: var(--preto);
+  color: var(--preto);
   cursor: pointer;
-  
 }
 
-
-
-.bottom svg {
-  fill: black;
-  
+.btnLike path {
+  fill: #0a1317;
+  transition: .2s;
 }
 
-body.dark .bottom svg{
-  fill: white;
-}
-
-.liked path {
+.btnLike path.liked {
   fill: red;
 }
 
+body.dark .btnLike path {
+  fill: white;
+}
+
+body.dark .btnLike path.liked {
+  fill: red;
+}
+
+body.dark .buttonsReaction {
+  fill: white;
+  color: white;
+}
