@@ -10,8 +10,7 @@ body {
   height: 100%;
 }
 
-
-.commentModal {
+.modalcomments {
   width: 100%;
   height: 100%;
   position: fixed;
@@ -21,6 +20,18 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  
 }
 
+.allpost {
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  background-color: white;
+}
+
+.postPhotoModal img{
+    width: 100%;
+    max-width: 500px;
+  height: auto;
+border-radius: 5px;
+}

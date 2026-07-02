@@ -2,9 +2,9 @@ function modalExit() {
   const button = document.querySelector(".btnMore");
   const Modal = document.querySelector(".allModal");
   const exit = document.querySelector(".exit");
-  const LogOt = document.querySelector("#LogOt");
   const Switch = document.querySelector("#Switch");
   const svgChange = document.querySelector(".svgChange svg");
+  const logOut = document.querySelector("#LogOt");
 
   button.addEventListener("click", () => {
     Modal.style.display = "flex";
@@ -14,8 +14,8 @@ function modalExit() {
     Modal.style.display = "none";
   });
 
-  LogOt.addEventListener("click", () => {
-    window.location.replace("http://127.0.0.1:5500/PAGE/login.html");
+  logOut.addEventListener("click", () => {
+    window.location.href = "http://127.0.0.1:5500/PAGE/login.html";
   });
 
   Switch.addEventListener("click", () => {
@@ -64,16 +64,46 @@ function btnReactions() {
 
   like();
 
-  function share() {
-    const btnShare = document.querySelector(".btnShare");
-    const shareNum = document.querySelector(".shareNum");
+function share() {
+  const btnShare = document.querySelector(".btnShare");
 
-    btnShare.addEventListener("click", () => {
+  let compartilhamentos = Number(localStorage.getItem("share")) || 0;
+  let compartilhou = localStorage.getItem("compartilhou") === "true";
 
-    });
+  const spanEL = document.createElement("span");
+  spanEL.classList.add("SpanShare");
+  spanEL.textContent = compartilhamentos;
+
+  btnShare.appendChild(spanEL);
+
+btnShare.addEventListener("click", () => {
+  if (!compartilhou) {
+    compartilhamentos++;
+    compartilhou = true;
+  } else {
+    if (compartilhamentos > 0) {
+      compartilhamentos--;
+    }
+    compartilhou = false;
   }
 
-  share();
+  spanEL.textContent = compartilhamentos;
+
+  localStorage.setItem("share", compartilhamentos);
+  localStorage.setItem("compartilhou", compartilhou);
+});
+}
+
+share();
+
+function comments() {
+
+
+  
+}
+
+comments()
+
 }
 
 btnReactions();
