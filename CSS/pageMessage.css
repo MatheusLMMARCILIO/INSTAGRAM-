@@ -1,0 +1,143 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+:root {
+  --preto: #0a1317;
+  --cinza: #65676b;
+  --cinzaClaro: #bcc0c4;
+  --branco: #ffffff;
+  --azulClaro: #99c1f3;
+  --azulEscuro: #0064e0;
+  --modoDark: #0c1014;
+  --borderBlack: #363636;
+}
+
+.messagesPage {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+
+.people {
+  width: 412px;
+  height: 100%;
+  margin-left: 80px;
+  border-right: 1px solid var(--cinzaClaro);
+  padding: 0px 20px 0px 20px;
+}
+
+.persona {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 27px 0px 15px 0px;
+}
+
+.persona span {
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+body.dark .persona {
+  color: white;
+}
+
+.persona svg {
+  cursor: pointer;
+}
+
+body.dark .persona svg {
+  color: white;
+  fill: white;
+}
+
+.inputsearch {
+  width: 100%;
+  height: 40px;
+  background-color: #F3F5F7;
+  border-radius: 100px;
+  padding: 3px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+
+body.dark .inputsearch {
+  background-color: #25292E;
+}
+
+.inputsearch svg {
+  color: var(--cinza);
+}
+
+.inputsearch input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: #F3F5F7;
+  padding-left: 15px;
+  margin-left: 8px;
+}
+
+body.dark .inputsearch input {
+  background-color: #25292E;
+}
+
+.message {
+  width: 77%;
+  height: 100%;
+  border: none;
+  border-radius: 100px;
+}
+
+.smsSpan span {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.matheus {
+  width: 100%;
+  height: auto;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+
+}
+
+.matheus img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50px;
+}
+
+.matheus span {
+  font-size: 14px;
+  color: #0c1014;
+  padding-left: 15px;
+}
+
+.matheus p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+font-family: none;
+color: #0064e0;
+width: 5px;
+height: 5px;
+background-color: #0064e0;
+border-radius: 50px;
+}
