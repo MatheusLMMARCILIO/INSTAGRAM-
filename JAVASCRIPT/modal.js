@@ -47,24 +47,29 @@ modalExit();
 
 function modalComment() {
 
-const btn = document.querySelector(".btnComment")
-const modal = document.querySelector(".modalcomments")
-const exit = document.querySelector(".exitt span") 
+  const btns = document.querySelectorAll(".btnComment");
 
-btn.addEventListener("click", ()=> {
-  modal.style.display = "flex"
-})
-
-exit.addEventListener("click",() => {
-  modal.style.display = 'none'
-})
+  const modal = document.querySelector(".modalcomments")
+  const exit = document.querySelector(".exitt span")
 
 
+  btns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+
+      modal.style.display = "flex";
+
+    });
+
+    exit.addEventListener("click", () => {
+      modal.style.display = 'none'
+    })
+
+  });
 
 
 
 
 
-} 
+}
 
 modalComment()

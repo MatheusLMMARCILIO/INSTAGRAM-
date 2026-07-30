@@ -3,7 +3,6 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
-  height: auto;
 }
 
 *:root {
@@ -13,18 +12,20 @@
   --branco: #ffffff;
   --azulClaro: #99c1f3;
   --azulEscuro: #0064e0;
+    --modoDark: #0c1014;
+  --borderBlack: #363636;
 }
 
 .pageHome {
 
   position: absolute;
-  z-index: -10;
   padding-left: 80px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
   padding-left: 80px;
+  
 }
 
 .storys {
@@ -156,4 +157,61 @@ body.dark .btnLike path.liked {
 body.dark .buttonsReaction {
   fill: white;
   color: white;
+}
+
+.modal-header-user {
+  width: 319px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+ 
+}
+
+.modal-header-user img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.modal-header-user p {
+  font-weight: 600;
+  font-size: 14px;
+  padding-left: 15px;
+}
+
+.modal-header-user button {
+  margin-left: auto;
+  border: none;
+  background-color: white;
+  color: var(--azulEscuro);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+body.dark .modal-header-user button {
+  background-color: var(--modoDark);
+}
+
+.modal-header-user a{
+  text-decoration: none;
+  color: var(--azulEscuro);
+}
+
+.middle {
+  margin: 20px 10px 10px 10px;
+}
+
+.middle span {
+  color: var(--cinza);
+font-weight: 700;
+}
+
+body.dark .middle span {
+  color: white;
+}
+
+.rigth {
+padding-top: 50px;
 }

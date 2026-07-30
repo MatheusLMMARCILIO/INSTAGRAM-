@@ -36,7 +36,7 @@ ul {
 .allpost {
   width: 95%;
   max-width: 1100px;
-  height: 720px;
+  height: 90vh;
 
   background: white;
   border-radius: 6px;
@@ -162,8 +162,7 @@ body.dark .comments input[type="text"] {
   background: transparent;
 }
 
-body.dark .comments svg,
-
+.comments svg,
 .exitt {
   cursor: pointer;
 }
