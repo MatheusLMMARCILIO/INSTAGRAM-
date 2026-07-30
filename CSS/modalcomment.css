@@ -5,33 +5,194 @@
   font-family: "Open Sans", sans-serif;
 }
 
+:root {
+  --preto: #0a1317;
+  --cinza: #65676b;
+  --cinzaClaro: #dbdbdb;
+  --branco: #fff;
+  --azulEscuro: #0095f6;
+}
+
 body {
-  width: 100%;
-  height: 100%;
+  min-height: 100vh;
+}
+
+ul {
+  list-style: none;
 }
 
 .modalcomments {
-  width: 100%;
-  height: 100%;
   position: fixed;
-  z-index: 10000;
-  background-color: #00000041;
-  display: flex;
-  align-items: center;
+  inset: 0;
+  background: rgba(0, 0, 0, .65);
+
+  display: none;
   justify-content: center;
-  flex-direction: column;
+  align-items: center;
+
+  z-index: 9999;
 }
 
 .allpost {
-  width: 100%;
-  max-width: 1000px;
-  height: auto;
-  background-color: white;
+  width: 95%;
+  max-width: 1100px;
+  height: 720px;
+
+  background: white;
+  border-radius: 6px;
+  overflow: hidden;
+
+  display: flex;
 }
 
-.postPhotoModal img{
-    width: 100%;
-    max-width: 500px;
-  height: auto;
-border-radius: 5px;
+
+
+.postLeft {
+  width: 55%;
+  background: black;
+}
+
+.postPhotoModal {
+  width: 100%;
+  height: 100%;
+}
+
+.postPhotoModal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.commentsPost {
+  width: 45%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.myself {
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 0 20px;
+
+  border-bottom: 1px solid var(--cinzaClaro);
+}
+
+.myself img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.myself p {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.commentsPerson {
+  flex: 1;
+
+  overflow-y: auto;
+
+  padding: 15px 20px;
+}
+
+.comments {
+  height: 55px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 0 20px;
+
+  border-top: 1px solid var(--cinzaClaro);
+}
+
+.comments svg {
+  cursor: pointer;
+}
+
+.comments input[type="text"] {
+  flex: 1;
+
+  height: 100%;
+
+  border: none;
+  outline: none;
+
+  font-size: 14px;
+}
+
+.comments input[type="submit"] {
+  border: none;
+  background: transparent;
+
+  color: var(--azulEscuro);
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.comments input[type="submit"]:hover {
+  opacity: .7;
+}
+
+
+body.dark .allpost {
+  background: #121212;
+}
+
+body.dark .myself,
+body.dark .comments {
+  border-color: #2d2d2d;
+}
+
+body.dark .myself p,
+body.dark .comments input {
+  color: white;
+}
+
+body.dark .comments input[type="text"] {
+  background: transparent;
+}
+
+body.dark .comments svg,
+
+.exitt {
+  cursor: pointer;
+}
+
+.person {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.person img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.person p {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.cometarios li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.commentPErson span {
+  margin: 0px 15px;
 }
