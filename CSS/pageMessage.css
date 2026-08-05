@@ -97,8 +97,7 @@ body.dark .inputsearch input {
   margin-left: 492px;
   width: calc(100% - 492px);
   height: 100vh;
-
-  display: flex;
+  display: none;
   flex-direction: column;
 }
 
@@ -111,7 +110,7 @@ body.dark .inputsearch input {
   width: 100%;
   height: auto;
   margin-top: 15px;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: baseline;
   cursor: pointer;
@@ -157,10 +156,7 @@ body.dark .matheus span {
   border-radius: 50px;
 }
 
-.messagemm {
-  width: 100%;
-  height: 100%;
-}
+
 
 .personaMenssage {
   display: flex;
@@ -294,7 +290,7 @@ body.dark .instagramicone a {
   background-color: var(--branco);
   border: none;
   outline: none;
-  
+
 }
 
 body.dark .inputpersona input {
@@ -333,10 +329,9 @@ body.dark .sendThis:hover {
 .messageText {
   flex: 1;
   padding: 15px;
-
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* joga tudo para baixo */
+  justify-content: flex-end;
 }
 
 .inputpersona {
@@ -360,10 +355,8 @@ body.dark .sendThis:hover {
 .inputpersona {
   width: calc(100% - 30px);
   margin: 0 15px 15px 15px;
-
   display: flex;
   align-items: center;
-
   border: 1px solid var(--cinza);
   border-radius: 50px;
   padding-right: 5px;
@@ -375,4 +368,75 @@ body.dark .sendThis:hover {
   border: none;
   outline: none;
   padding: 0 15px;
+}
+
+.mensagepersonasms {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
+.mensagepersonasms img {
+  width: 100%;
+  max-width: 44px;
+  border-radius: 500px;
+  margin: 15px 15px 0px 15px;
+  margin-top: auto;
+}
+
+.blocoMensage {
+  width: 380px;
+  height: 118px;
+  background-color: #4A5DF9;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  border-radius: 20px;
+}
+
+
+.mensagepersonasms span {
+  font: 15px;
+  color: white;
+}
+
+.nomessagem {
+  margin-left: 492px;
+  width: calc(100% - 492px);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.nomessagem span {
+  font-size: 20px;
+  color: black;
+  font-weight: bold;
+  margin: 20px 0px 16px 0px;
+}
+
+.nomessagem p {
+  font-size: 14px;
+  color: var(--cinzaClaro);
+  margin-bottom: 20px;
+}
+
+.nomessagem button{
+  max-width: 122px;
+  width: 100%;
+  height: 40px;
+  background-color: #4A5DF9;
+  font-size: 14px;
+  color: white;
+  border: none;
+  border-radius: 9px;
+  font-weight: bold;
+
+}
+
+body.dark .nomessagem span {
+  color: white;
 }
