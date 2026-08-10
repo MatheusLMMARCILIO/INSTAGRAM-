@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+:root {
+  --preto: #0a1317;
+  --cinza: #65676b;
+  --cinzaClaro: #bcc0c4;
+  --branco: #ffffff;
+  --azulClaro: #99c1f3;
+  --azulEscuro: #0095f6;
+  --modoDark: #0c1014;
+  --borderBlack: #363636;
+}
+
+.newPost {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+}
+
+.createNew {
+  width: 420px;
+  max-width: 90%;
+  background: var(--branco);
+  border-radius: 22px;
+  padding: 55px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  text-align: center;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+}
+
+.createNew svg {
+  width: 96px;
+  height: 96px;
+  color: var(--preto);
+}
+
+.newPossssst {
+  content: "Select from computer";
+  background: var(--azulEscuro);
+  color: var(--branco);
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+  border: none;
+}
+
+.createNew:hover {
+  filter: brightness(1.05);
+}
+
+.newPost span {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+}
+
+.newPost span:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.newPost span p {
+  color: var(--branco);
+  font-size: 34px;
+  line-height: 1;
+}
+
+body.dark .createNew {
+  background: var(--modoDark);
+  border: 1px solid var(--borderBlack);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
+}
+
+body.dark .createNew svg {
+  color: var(--branco);
+}
+
+body.dark .createNew::before {
+  color: var(--branco);
+}
+
+body.dark .createNew::after {
+  background: var(--azulEscuro);
+  color: var(--branco);
+}
+
+body.dark .newPost span:hover {
+  background: rgba(255, 255, 255, 0.08);
+}

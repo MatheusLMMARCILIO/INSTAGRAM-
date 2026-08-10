@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+
+*:root {
+    --preto: #0a1317;
+    --cinza: #65676b;
+    --cinzaClaro: #bcc0c4;
+    --fundoCinza: #F3F5F7;
+    --branco: #ffffff;
+    --azulClaro: #99c1f3;
+    --azulEscuro: #0064e0;
+    --modoDark: #0c1014;
+    --borderBlack: #363636;
+}
+
+.modalSwitch {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .65);
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+}
+
+.SwitchModal {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    background-color: white;
+    border-radius: 50px;
+    padding-bottom: 30px;
+}
+
+body.dark .SwitchModal {
+    background-color: var(--modoDark);
+}
+
+.switchCloseModal {
+    font-size: 30px;
+    color: var(--preto);
+    display: flex;
+justify-content: end;
+align-items: center;
+padding: 10px 25px 10px 10px;
+}
+
+.switchCloseModal p {
+    cursor: pointer;
+}
+
+body.dark .switchCloseModal span {
+    color: var(--branco);
+}
+
+.instgramLogoI {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 30px;
+}
+.SwitchModalInputs ul {
+ list-style: none;
+ padding: 0;
+ margin: 0;
+}
+
+.SwitchModalInputs li {
+margin: 0 90px 12px 90px;
+}
+
+.SwitchModalInputs input {
+    font-size: 12px;
+    width: 100%;
+    height: 36px;
+    padding: 0px 10px;
+    border: 1px solid var(--cinzaClaro);
+    background-color: var(--fundoCinza);
+    border-radius: 5px;
+}
+ 
+body.dark .SwitchModalInputs input {
+    background-color: #25292e;
+    border: 1px solid var(--borderBlack);
+    color: white;
+}
+
+.SwitchModalInputs input:focus {
+    border: none;
+    outline: 1px solid var(--cinza);
+}
+
+.SwitchModalInputs button {
+    width: 100%;
+    height: 35px;
+    background-color: var(--azulEscuro);
+    border: 1px solid var(--azulEscuro);
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+}
+
+.SwitchModalInputs button:hover {
+    background-color: var(--azulClaro);
+    border: 1px solid var(--azulClaro);
+}
+

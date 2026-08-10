@@ -1,3 +1,4 @@
+
 function modalExit() {
   const button = document.querySelector(".btnMore");
   const Modal = document.querySelector(".allModal");
@@ -45,31 +46,3 @@ function modalExit() {
 }
 modalExit();
 
-function modalComment() {
-
-  const btns = document.querySelectorAll(".btnComment");
-
-  const modal = document.querySelector(".modalcomments")
-  const exit = document.querySelector(".exitt span")
-
-
-  btns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-
-      modal.style.display = "flex";
-
-    });
-
-    exit.addEventListener("click", () => {
-      modal.style.display = 'none'
-    })
-
-  });
-
-
-
-
-
-}
-
-modalComment()
