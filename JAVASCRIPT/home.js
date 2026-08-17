@@ -48,54 +48,18 @@ function btnReactions() {
   }
 
   share();
-
-
 }
 
 btnReactions();
 
-function commentss() {
-
-  const textComennt = document.querySelector(".ComentariosIN")
-  const btnComment = document.querySelector(".PostIN")
-
-  btnComment.addEventListener("click", () => {
-
-
-
-
-  })
-
-
-}
-
-commentss()
-
 function modalComment() {
-
   const btns = document.querySelectorAll(".btnComment");
-  const modal = document.querySelector(".modalcomments")
-  const exit = document.querySelector(".exitt span")
+  const modal = document.querySelector(".modalcomments");
+  const exit = document.querySelector(".exitt span");
 
-
-  btns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-
-      modal.style.display = "flex";
-
-    });
-
-    exit.addEventListener("click", () => {
-      modal.style.display = 'none'
-    })
-
-  });
-
-  const buttonPost = document.querySelector(".PostIN")
-  const postInput = document.querySelector(".ComentariosIN")
-  const childUl = document.querySelector(".comentarios")
-
-  const userName = JSON.parse(localStorage.getItem("usuarios"))?.nameDeUsuario || "nousername"
+  const buttonPost = document.querySelector(".PostIN");
+  const postInput = document.querySelector(".ComentariosIN");
+  const childUl = document.querySelector(".comentarios");
 
   const popup = document.getElementById("popup");
   const yes = document.getElementById("yes");
@@ -104,129 +68,163 @@ function modalComment() {
   const emptyPopup = document.getElementById("emptyPopup");
   const okAlert = document.getElementById("okAlert");
 
+  const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+  const usuarioAtual = Array.isArray(usuarios) ? usuarios[0] : usuarios;
+
+  let comentariosSave = JSON.parse(localStorage.getItem("savecomment")) || [];
+
+  btns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      modal.style.display = "flex";
+    });
+  });
+
+  exit.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
   okAlert.onclick = () => {
     emptyPopup.classList.add("hidden");
   };
 
-const comentariosSave = JSON.parse(localStorage.getItem("savecomment")) || []
+  function salvarComentarios() {
+    localStorage.setItem("savecomment", JSON.stringify(comentariosSave));
+  }
 
+  function mostrarComentario(comentario) {
+    const elLi = document.createElement("li");
 
+    const elDivPerson = document.createElement("div");
+    elDivPerson.classList.add("person");
+
+    const elImg = document.createElement("img");
+    elImg.src = "/IMAGE/profileIcone.avif";
+
+    const elP = document.createElement("p");
+
+    elP.textContent =
+      comentario.nome || usuarioAtual?.nameDeUsuario || "Usuário";
+
+    elDivPerson.appendChild(elImg);
+    elDivPerson.appendChild(elP);
+
+    const elDivComment = document.createElement("div");
+    elDivComment.classList.add("commentPErson");
+
+    const elSpanComment = document.createElement("span");
+
+    elSpanComment.textContent = comentario.texto || comentario;
+
+    elDivComment.appendChild(elSpanComment);
+
+    const ElDivExit = document.createElement("div");
+    ElDivExit.classList.add("deleteComment");
+
+    const elSpanExit = document.createElement("span");
+    elSpanExit.innerHTML = "&times;";
+
+    elSpanExit.addEventListener("click", () => {
+      popup.classList.remove("hidden");
+
+      yes.onclick = () => {
+        elLi.remove();
+
+        comentariosSave = comentariosSave.filter(
+          (item) => item.id !== comentario.id,
+        );
+
+        salvarComentarios();
+
+        popup.classList.add("hidden");
+      };
+    });
+
+    ElDivExit.appendChild(elSpanExit);
+
+    elLi.appendChild(elDivPerson);
+    elLi.appendChild(elDivComment);
+    elLi.appendChild(ElDivExit);
+
+    childUl.appendChild(elLi);
+  }
+
+  function adicionarComentario(texto) {
+    const novoComentario = {
+      id: Date.now(),
+      nome: usuarioAtual?.nameDeUsuario || "Usuário",
+      texto: texto,
+    };
+
+    comentariosSave.push(novoComentario);
+
+    salvarComentarios();
+
+    mostrarComentario(novoComentario);
+
+    postInput.value = "";
+  }
+
+  comentariosSave.forEach((comentario) => {
+    if (typeof comentario === "string") {
+      const comentarioConvertido = {
+        id: Date.now() + Math.random(),
+        nome: usuarioAtual?.nameDeUsuario || "Usuário",
+        texto: comentario,
+      };
+
+      mostrarComentario(comentarioConvertido);
+    } else {
+      mostrarComentario(comentario);
+    }
+  });
 
   buttonPost.addEventListener("click", () => {
-    const textInput = postInput.value.trim()
-
-function salvarTarefa(textInput) {
-  tarefas.push(textInput);
-
-  localStorage.setItem("tarefas", JSON.stringify(tarefas));
-}
+    const textInput = postInput.value.trim();
 
     if (textInput === "") {
       emptyPopup.classList.remove("hidden");
+
       return;
-
-
-    } else {
-      const elLi = document.createElement('li')
-
-      const elDivPerson = document.createElement("div")
-      elDivPerson.classList.add("person")
-
-      const elImg = document.createElement("img")
-      elImg.src = "/IMAGE/profileIcone.avif"
-
-      const elP = document.createElement("p")
-      elP.innerHTML = userName
-
-      elDivPerson.appendChild(elImg)
-      elDivPerson.appendChild(elP)
-
-      const elDivComment = document.createElement("div")
-      elDivComment.classList.add("commentPErson")
-
-      const elSpanComment = document.createElement("span")
-      elSpanComment.innerHTML = textInput
-
-      elDivComment.appendChild(elSpanComment)
-
-
-      const ElDivExit = document.createElement("div")
-      ElDivExit.classList.add("deleteComment")
-
-      const elSpanExit = document.createElement("span")
-      elSpanExit.innerHTML = "&times;"
-
-      elSpanExit.addEventListener("click", () => {
-        popup.classList.remove("hidden");
-
-        yes.onclick = () => {
-          elLi.remove();
-          popup.classList.add("hidden");
-        };
-      });
-
-      no.onclick = () => {
-        popup.classList.add("hidden");
-      };
-
-      ElDivExit.appendChild(elSpanExit)
-
-      elLi.appendChild(elDivPerson)
-      elLi.appendChild(elDivComment)
-      elLi.appendChild(ElDivExit)
-
-      childUl.appendChild(elLi)
-
-      postInput.value = ""
-
-
     }
 
+    adicionarComentario(textInput);
+  });
 
-
-  })
-
+  no.onclick = () => {
+    popup.classList.add("hidden");
+  };
 }
 
-modalComment()
+modalComment();
 
 function modalSwitch() {
-
-
-
-  const modal = document.querySelector(".modalSwitch")
-  const close = document.querySelector(".switchCloseModal p")
-  const button = document.querySelector(".btnCLassSwitch")
+  const modal = document.querySelector(".modalSwitch");
+  const close = document.querySelector(".switchCloseModal p");
+  const button = document.querySelector(".btnCLassSwitch");
 
   button.addEventListener("click", () => {
-    modal.style.display = "flex"
-  })
+    modal.style.display = "flex";
+  });
 
   close.addEventListener("click", () => {
-    modal.style.display = "none"
-  })
-
+    modal.style.display = "none";
+  });
 }
-modalSwitch()
+modalSwitch();
 
-function modalpost(){
+function modalpost() {
+  const buttonCreate = document.querySelector(".createModal");
+  const createPostModal = document.querySelector(".newPost");
+  const deleteModalPost = document.querySelector(".deleteModalPost");
 
-const buttonCreate = document.querySelector(".createModal")
-const createPostModal = document.querySelector(".newPost")
-const deleteModalPost = document.querySelector(".deleteModalPost")
+  buttonCreate.addEventListener("click", () => {
+    createPostModal.style.display = "flex";
+  });
 
-buttonCreate.addEventListener("click", () => {
- 
-createPostModal.style.display = "flex"
-
-})
-
-deleteModalPost.addEventListener("click", () => {
-
-  createPostModal.style.display = "none"
-})
-
-
+  deleteModalPost.addEventListener("click", () => {
+    createPostModal.style.display = "none";
+  });
 }
 
-modalpost()
+modalpost();
