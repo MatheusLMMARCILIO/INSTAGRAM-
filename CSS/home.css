@@ -103,7 +103,8 @@ body.dark .myself p {
 }
 
 .postPhoto img {
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   height: auto;
   border-radius: 5px;
 }
@@ -135,13 +136,12 @@ body.dark .buttonsReaction span {
   color: var(--preto);
   cursor: pointer;
 }
-
 .btnLike path {
   fill: #0a1317;
   transition: .2s;
 }
 
-.btnLike path.liked {
+.btnLike.liked path {
   fill: red;
 }
 
@@ -149,10 +149,9 @@ body.dark .btnLike path {
   fill: white;
 }
 
-body.dark .btnLike path.liked {
+body.dark .btnLike.liked path {
   fill: red;
 }
-
 body.dark .buttonsReaction {
   fill: white;
   color: white;
@@ -213,4 +212,8 @@ body.dark .middle span {
 
 .rigth {
   padding-top: 50px;
+}
+
+.post {
+  margin: 20px 0px;
 }
