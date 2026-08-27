@@ -1,8 +1,13 @@
-function showMessage() {
+
   const messageDirect = document.querySelector(".matheus");
   const messagemBloco = document.querySelector(".messagemm");
   const nomessagem = document.querySelector(".nomessagem");
   const persona = document.querySelector("#persona");
+
+const usuario = JSON.parse(localStorage.getItem("usuarios"))
+persona.innerHTML =     `<span>${usuario[0].nome}</span>`
+
+
   setTimeout(() => {
     messageDirect.style.display = "flex";
   }, 1500);
@@ -12,8 +17,5 @@ function showMessage() {
     messagemBloco.style.display = "flex";
   });
 
-  const user = JSON.parse(localStorage.getItem("usuarios"));
-  persona.innerHTML = `<span>${user[0].nameDeUsuario}</span>`
-}
 
-showMessage();
+

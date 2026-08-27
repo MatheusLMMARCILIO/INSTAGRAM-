@@ -1,9 +1,13 @@
+//comment
+
 const like = document.querySelector(".btnLike");
 const comment = document.querySelector(".btnComment");
-const exitt = document.querySelector(".exitt")
+const exitt = document.querySelector(".exitt");
 const popup = document.getElementById("popup");
 const yes = document.getElementById("yes");
 const no = document.getElementById("no");
+const emptyPopup = document.querySelector("#emptyPopup");
+const okAlert = document.querySelector("#okAlert");
 
 const Photoaaa = document.querySelector("#Photo");
 const postImh = Photoaaa.src;
@@ -13,21 +17,21 @@ const perfil = perfilF.src;
 
 //modal
 const divModalComment = document.querySelector(".modalcomments");
-const postModal = document.querySelector(".postModal")
-
+const postModal = document.querySelector(".postModal");
 
 //localStorage
 const reaction = localStorage.getItem("reaction");
 const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 const comentario = JSON.parse(localStorage.getItem("Commit")) || [];
 
-
-
 exitt.addEventListener("click", () => {
-  divModalComment.style.display = "none"
-  postModal.innerHTML = ""
-})
+  divModalComment.style.display = "none";
+  postModal.innerHTML = "";
+});
 
+okAlert.addEventListener("click", () => {
+  emptyPopup.style.display = "none";
+});
 
 function btnComment(button, modal, post, name, perfil, user) {
   button.addEventListener("click", () => {
@@ -76,12 +80,15 @@ function createModalComment(post, name, perfil, user) {
   const pMyself = document.createElement("p");
   pMyself.textContent = name;
 
-
   const divPersonComment = document.createElement("div");
   divPersonComment.classList.add("commentsPerson");
 
   const elUlLista = document.createElement("ul");
   elUlLista.classList.add("comentarios");
+
+  comentario.forEach((item) => {
+    addComment(item.texto, elUlLista, item.nome, comentario.length - 1);
+  });
 
   const divInput = document.createElement("div");
   divInput.classList.add("comments");
@@ -112,27 +119,21 @@ function createModalComment(post, name, perfil, user) {
   submit.classList.add("PostIN");
   submit.value = "Post";
   submit.addEventListener("click", () => {
-    if (input.value.trim() === "") {
-      return
+    if (input.value === "") {
+      emptyPopup.style.display = "flex";
+    } else {
+      comentario.push({
+        texto: input.value,
+        nome: user,
+      });
+
+      localStorage.setItem("Commit", JSON.stringify(comentario));
+
+      addComment(input.value, elUlLista, user, comentario);
     }
-
-    const saveCommit = {
-      commit: input.value,
-      user: user
-    };
-
-    comentario.push(saveCommit);
-
-    localStorage.setItem("Commit", JSON.stringify(comentario));
-
-    addComment(input, elUlLista, user);
 
     input.value = "";
   });
-
-comentario.forEach(commit => {
-  addComment(input, elUlLista, user);
-})
 
   divMyself.appendChild(imgMySelf);
   divMyself.appendChild(pMyself);
@@ -141,7 +142,7 @@ comentario.forEach(commit => {
   divInput.appendChild(input);
   divInput.appendChild(submit);
 
-  divPersonComment.appendChild(elUlLista)
+  divPersonComment.appendChild(elUlLista);
 
   DivComment.appendChild(divMyself);
   DivComment.appendChild(divPersonComment);
@@ -154,23 +155,23 @@ comentario.forEach(commit => {
   postModal.appendChild(divAllPost);
 }
 
-function addComment(inputText, modal, nome) {
+function addComment(text, modal, nome, index) {
+  console.log("TEXTO RECEBIDO:", text);
 
   const elLi = document.createElement("li");
 
-  const allcommit = document.createElement("div")
-  allcommit.classList.add("AllCommit")
+  const allcommit = document.createElement("div");
+  allcommit.classList.add("AllCommit");
 
   const elDivPerson = document.createElement("div");
   elDivPerson.classList.add("person");
 
   const elImg = document.createElement("img");
-  elImg.src = "../../IMAGE/profileIcone.avif"
+  elImg.src = "../../IMAGE/profileIcone.avif";
 
   const elP = document.createElement("p");
 
-  elP.textContent = nome
-
+  elP.textContent = nome;
 
   elDivPerson.appendChild(elImg);
   elDivPerson.appendChild(elP);
@@ -180,7 +181,7 @@ function addComment(inputText, modal, nome) {
 
   const elSpanComment = document.createElement("span");
 
-  elSpanComment.textContent = inputText.value
+  elSpanComment.textContent = text;
 
   elDivComment.appendChild(elSpanComment);
 
@@ -191,8 +192,12 @@ function addComment(inputText, modal, nome) {
   elSpanExit.innerHTML = "&times;";
 
   elSpanExit.addEventListener("click", () => {
-    comentario.remove("commit")
-  })
+    comentario.splice(index, 1);
+
+    localStorage.setItem("Commit", JSON.stringify(comentario));
+
+    elLi.remove();
+  });
 
   ElDivExit.appendChild(elSpanExit);
 
@@ -200,13 +205,23 @@ function addComment(inputText, modal, nome) {
   allcommit.appendChild(elDivComment);
   allcommit.appendChild(ElDivExit);
 
-
-
-  elLi.appendChild(allcommit)
+  elLi.appendChild(allcommit);
   modal.appendChild(elLi);
 }
 
 btnLike(like);
 
-btnComment(comment, divModalComment, postImh, "mmatheuww", perfil, usuarios[0].name);
+btnComment(
+  comment,
+  divModalComment,
+  postImh,
+  "mmatheuww",
+  perfil,
+  usuarios[0].nome,
+);
 
+// switch
+
+const you = document.querySelector(".you")
+
+you.innerHTML = usuarios[0].nome

@@ -18,13 +18,13 @@ function createAccount(e) {
  const usuario = {
     acesso: acess.value,
     senha: password.value,
-    name: username.value,
+    nome: username.value,
   };
 
   if (
     !usuario.acesso.trim() ||
     !usuario.senha.trim() ||
-    !usuario.name.trim()
+    !usuario.nome.trim()
   ) {
     exclamation.style.display = "flex";
     exclamation2.style.display = "flex";
