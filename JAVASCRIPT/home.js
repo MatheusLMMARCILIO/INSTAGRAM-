@@ -1,5 +1,9 @@
 const like = document.querySelector(".btnLike");
 const comment = document.querySelector(".btnComment");
+const exitt = document.querySelector(".exitt")
+const popup = document.getElementById("popup");
+const yes = document.getElementById("yes");
+const no = document.getElementById("no");
 
 const Photoaaa = document.querySelector("#Photo");
 const postImh = Photoaaa.src;
@@ -9,14 +13,29 @@ const perfil = perfilF.src;
 
 //modal
 const divModalComment = document.querySelector(".modalcomments");
+const postModal = document.querySelector(".postModal")
+
 
 //localStorage
 const reaction = localStorage.getItem("reaction");
+const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+const comentario = JSON.parse(localStorage.getItem("Commit")) || [];
 
-function btnComment(button, modal, post, name, perfil) {
+
+
+exitt.addEventListener("click", () => {
+  divModalComment.style.display = "none"
+  postModal.innerHTML = ""
+})
+
+
+function btnComment(button, modal, post, name, perfil, user) {
   button.addEventListener("click", () => {
     modal.style.display = "flex";
-    createModalComment(post, name, perfil);
+
+    postModal.innerHTML = "";
+
+    createModalComment(post, name, perfil, user);
   });
 }
 
@@ -32,7 +51,7 @@ function btnLike(button) {
   });
 }
 
-function createModalComment(post, name, perfil) {
+function createModalComment(post, name, perfil, user) {
   const divAllPost = document.createElement("div");
   divAllPost.classList.add("allpost");
 
@@ -57,11 +76,6 @@ function createModalComment(post, name, perfil) {
   const pMyself = document.createElement("p");
   pMyself.textContent = name;
 
-  const divExit = document.createElement("div");
-  divExit.classList.add("exitt");
-
-  const ElspanExit = document.createElement("span");
-  ElspanExit.innerHTML = "&times;";
 
   const divPersonComment = document.createElement("div");
   divPersonComment.classList.add("commentsPerson");
@@ -97,31 +111,102 @@ function createModalComment(post, name, perfil) {
   submit.type = "submit";
   submit.classList.add("PostIN");
   submit.value = "Post";
+  submit.addEventListener("click", () => {
+    if (input.value.trim() === "") {
+      return
+    }
+
+    const saveCommit = {
+      commit: input.value,
+      user: user
+    };
+
+    comentario.push(saveCommit);
+
+    localStorage.setItem("Commit", JSON.stringify(comentario));
+
+    addComment(input, elUlLista, user);
+
+    input.value = "";
+  });
+
+comentario.forEach(commit => {
+  addComment(input, elUlLista, user);
+})
+
+  divMyself.appendChild(imgMySelf);
+  divMyself.appendChild(pMyself);
 
   divInput.appendChild(emoji);
   divInput.appendChild(input);
   divInput.appendChild(submit);
 
-  divPersonComment.appendChild(elUlLista);
+  divPersonComment.appendChild(elUlLista)
 
-  divExit.appendChild(ElspanExit);
-
-  divMyself.appendChild(imgMySelf);
-  divMyself.appendChild(pMyself);
-
-  DivComment.appendChild(divInput);
-  DivComment.appendChild(divPersonComment);
-  DivComment.appendChild(divExit);
   DivComment.appendChild(divMyself);
+  DivComment.appendChild(divPersonComment);
+  DivComment.appendChild(divInput);
 
   divPostleft.appendChild(imgPost);
-
   divAllPost.appendChild(divPostleft);
   divAllPost.appendChild(DivComment);
 
-  divModalComment.appendChild(divAllPost);
+  postModal.appendChild(divAllPost);
+}
+
+function addComment(inputText, modal, nome) {
+
+  const elLi = document.createElement("li");
+
+  const allcommit = document.createElement("div")
+  allcommit.classList.add("AllCommit")
+
+  const elDivPerson = document.createElement("div");
+  elDivPerson.classList.add("person");
+
+  const elImg = document.createElement("img");
+  elImg.src = "../../IMAGE/profileIcone.avif"
+
+  const elP = document.createElement("p");
+
+  elP.textContent = nome
+
+
+  elDivPerson.appendChild(elImg);
+  elDivPerson.appendChild(elP);
+
+  const elDivComment = document.createElement("div");
+  elDivComment.classList.add("commentPErson");
+
+  const elSpanComment = document.createElement("span");
+
+  elSpanComment.textContent = inputText.value
+
+  elDivComment.appendChild(elSpanComment);
+
+  const ElDivExit = document.createElement("div");
+  ElDivExit.classList.add("deleteComment");
+
+  const elSpanExit = document.createElement("span");
+  elSpanExit.innerHTML = "&times;";
+
+  elSpanExit.addEventListener("click", () => {
+    comentario.remove("commit")
+  })
+
+  ElDivExit.appendChild(elSpanExit);
+
+  allcommit.appendChild(elDivPerson);
+  allcommit.appendChild(elDivComment);
+  allcommit.appendChild(ElDivExit);
+
+
+
+  elLi.appendChild(allcommit)
+  modal.appendChild(elLi);
 }
 
 btnLike(like);
 
-btnComment(comment, divModalComment, postImh, "mmatheuww", perfil);
+btnComment(comment, divModalComment, postImh, "mmatheuww", perfil, usuarios[0].name);
+

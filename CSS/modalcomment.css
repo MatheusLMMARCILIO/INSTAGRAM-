@@ -29,13 +29,14 @@ ul {
   display: none;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 
   z-index: 9999;
 }
 
 .allpost {
   width: 95%;
-  max-width: 1100px;
+  max-width: 900px;
   height: 90vh;
 
   background: white;
@@ -52,10 +53,7 @@ ul {
   background: black;
 }
 
-.postPhotoModal {
-  width: 100%;
-  height: 100%;
-}
+
 
 .postPhotoModal img {
   width: 100%;
@@ -82,13 +80,25 @@ ul {
 }
 
 .exitt {
-    margin-left: auto;
+  width: 100%;
+  height: 5vh;
   display: flex;
 }
 
 .exitt span {
   cursor: pointer;
   font-size: 30px;
+  color: var(--branco);
+  margin-left: auto;
+  padding-right: 20px;
+}
+
+.postModal {
+  width: 100%;
+  height: 95vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .myself img {
@@ -173,12 +183,7 @@ body.dark .comments input[type="text"] {
   cursor: pointer;
 }
 
-.person {
-  height: 70px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
+
 
 .person img {
   width: 36px;
@@ -189,6 +194,9 @@ body.dark .comments input[type="text"] {
 .person p {
   font-weight: 600;
   font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .comentarios li {
@@ -285,7 +293,6 @@ body.dark #no {
   display: none !important;
 }
 
-/* LIGHT */
 .alert-box {
   width: 260px;
   background: #fff;
@@ -314,7 +321,7 @@ body.dark #no {
   cursor: pointer;
 }
 
-/* DARK */
+
 body.dark .alert-box {
   background: #1c1c1e;
   color: #fff;
@@ -326,4 +333,18 @@ body.dark .alert-box p {
 
 body.dark .alert-box button {
   color: #4da3ff;
+}
+
+.AllCommit {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  background-color: #0095f6;
+}
+
+.person {
+  display: flex;
 }

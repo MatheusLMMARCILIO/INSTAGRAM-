@@ -61,9 +61,7 @@ function modalComment() {
   const postInput = document.querySelector(".ComentariosIN");
   const childUl = document.querySelector(".comentarios");
 
-  const popup = document.getElementById("popup");
-  const yes = document.getElementById("yes");
-  const no = document.getElementById("no");
+
 
   const emptyPopup = document.getElementById("emptyPopup");
   const okAlert = document.getElementById("okAlert");
