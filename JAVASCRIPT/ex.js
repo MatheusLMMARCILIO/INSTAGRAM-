@@ -17,35 +17,7 @@ function btnReactions() {
 
   like();
 
-  function share() {
-    const btnShare = document.querySelector(".btnShare");
-
-    let compartilhamentos = Number(localStorage.getItem("share")) || 0;
-    let compartilhou = localStorage.getItem("compartilhou") === "true";
-
-    const spanEL = document.createElement("span");
-    spanEL.classList.add("SpanShare");
-    spanEL.textContent = compartilhamentos;
-
-    btnShare.appendChild(spanEL);
-
-    btnShare.addEventListener("click", () => {
-      if (!compartilhou) {
-        compartilhamentos++;
-        compartilhou = true;
-      } else {
-        if (compartilhamentos > 0) {
-          compartilhamentos--;
-        }
-        compartilhou = false;
-      }
-
-      spanEL.textContent = compartilhamentos;
-
-      localStorage.setItem("share", compartilhamentos);
-      localStorage.setItem("compartilhou", compartilhou);
-    });
-  }
+ 
 
   share();
 }
@@ -60,8 +32,6 @@ function modalComment() {
   const buttonPost = document.querySelector(".PostIN");
   const postInput = document.querySelector(".ComentariosIN");
   const childUl = document.querySelector(".comentarios");
-
-
 
   const emptyPopup = document.getElementById("emptyPopup");
   const okAlert = document.getElementById("okAlert");
@@ -312,21 +282,20 @@ function modalpost() {
     ulPost.appendChild(elDivPost);
   }
 
+  imageInput.addEventListener("change", (event) => {
+    imageFilee = event.target.files[0];
 
+    if (imageFilee) {
+      postBtn.style.display = "flex";
+    }
+  });
 
-imageInput.addEventListener("change", (event) => {
-  imageFilee = event.target.files[0];
-
-  if (imageFilee) {
-    postBtn.style.display = "flex";
-  }
-});
-
-postBtn.addEventListener("click", () => {
-  if (imageFilee) {
-    postCreate();
-  }
-});
+  postBtn.addEventListener("click", () => {
+    if (imageFilee) {
+      postCreate();
+    }
+  });
 }
 
 modalpost();
+

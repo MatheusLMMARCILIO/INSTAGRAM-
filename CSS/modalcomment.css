@@ -76,7 +76,6 @@ ul {
   align-items: center;
   justify-content: start;
   padding: 0 20px;
-  border-bottom: 1px solid var(--cinzaClaro);
 }
 
 .exitt {
@@ -197,6 +196,7 @@ body.dark .comments input[type="text"] {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: 8px;
 }
 
 .comentarios li {

@@ -1,21 +1,20 @@
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Open Sans", sans-serif
 }
 
 body {
- width:100%;
-    min-height:100vh;
-  background-color: #ffffff;
-  color: #000;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #fff;
+  color: #000
 }
 
 body.dark {
   background-color: #0c1014;
-  color: #ffffff;
+  color: #fff
 }
 
 aside {
@@ -28,19 +27,19 @@ aside {
   align-items: flex-start;
   justify-content: space-between;
   flex-direction: column;
-  transition: width 0.3s ease;
+  padding: 20px;
+  background-color: #fff;
+  transition: width .3s ease;
   overflow: hidden;
-  z-index: 1;
-  padding: 20px 20px;
-  background-color: #ffffff;
+  z-index: 9999
 }
 
 body.dark aside {
-  background-color: #0c1014;
+  background-color: #0c1014
 }
 
 aside:hover {
-  width: 220px;
+  width: 220px
 }
 
 .logo {
@@ -50,48 +49,47 @@ aside:hover {
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  cursor: pointer;
+  cursor: pointer
 }
 
 .logo a {
   display: none;
   text-decoration: none;
-  color: black;
+  color: #000
 }
 
 body.dark .logo a {
-  color: white;
+  color: #fff
 }
 
 .logo svg {
-  fill: black;
+  fill: #000
 }
 
 body.dark .logo svg {
-  fill: white;
+  fill: #fff
 }
 
 .logo:hover {
-  background-color: #0000001e;
+  background-color: #0000001e
 }
 
 body.dark .logo:hover {
-  background-color: #ffffff1e;
+  background-color: #ffffff1e
 }
 
 aside:hover .logo a {
   display: block;
-  margin-left: 10px;
+  margin-left: 10px
 }
 
 .linksRolls {
-  width: 100%;
+  width: 100%
 }
 
 .linksRolls ul {
-  width: 100%;
+  width: 100%
 }
-
 
 .linksRolls li {
   width: 28%;
@@ -103,72 +101,69 @@ aside:hover .logo a {
   margin-bottom: 10px;
   border-radius: 10px;
   padding: 10px;
-  transition: all 0.3s ease;
-  cursor: pointer;
+  transition: all .3s ease;
+  cursor: pointer
 }
 
 aside:hover .linksRolls li {
-  width: 100%;
+  width: 100%
 }
 
 .linksRolls li:hover {
-  background-color: #0000001e;
+  background-color: #0000001e
 }
 
 body.dark .linksRolls li:hover {
-  background-color: #ffffff1e;
+  background-color: #ffffff1e
 }
 
 li a {
   font-size: 15px;
-  color: black;
+  color: #000;
   text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-weight: 600;
-
+  font-weight: 600
 }
 
 body.dark li a {
-  color: white;
+  color: #fff
 }
 
 body.dark .elUl svg {
-  fill: white;
+  fill: #fff
 }
 
 body.dark .elUl span {
-  color: white;
+  color: #fff
 }
 
 .linksRolls svg {
   min-width: 24px;
-  fill: black;
+  fill: #000
 }
 
 body.dark .linksRolls svg {
-  fill: white;
+  fill: #fff
 }
 
 .linksRolls span {
   opacity: 0;
   margin-left: 10px;
   transform: translateX(-10px);
-  transition: all 0.3s ease;
+  transition: all .3s ease;
   white-space: nowrap;
-  color: black;
+  color: #000
 }
 
 body.dark .linksRolls span {
-  color: white;
+  color: #fff
 }
 
 aside:hover .linksRolls span {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateX(0)
 }
 
 .btnMore {
@@ -177,39 +172,122 @@ aside:hover .linksRolls span {
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  background-color: transparent;
+  background-color: transparent
 }
 
 body.dark .btnMore svg,
 body.dark .btnMore span,
 body.dark .btnMore a {
-  fill: white;
-  color: white;
+  fill: #fff;
+  color: #fff
 }
 
 body:not(.dark) .btnMore svg,
 body:not(.dark) .btnMore span,
 body:not(.dark) .btnMore a {
-  fill: black;
-  color: black;
+  fill: #000;
+  color: #000
 }
 
 .btnMore:hover {
-  background-color: #0000001e;
+  background-color: #0000001e
 }
 
 body.dark .btnMore {
-  background-color: #0c1014;
+  background-color: #0c1014
 }
 
 body.dark .btnMore:hover {
-  background-color: #ffffff1e;
+  background-color: #ffffff1e
 }
 
 i {
-  color: black;
+  color: #000
 }
 
 body.dark i {
-  color: white;
+  color: #fff
+}
+
+@media(max-width:768px) {
+  aside {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    padding: 0 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    overflow: visible;
+    transition: none
+  }
+
+  aside:hover {
+    width: 100%
+  }
+
+  .logo {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0
+  }
+
+  aside:hover .logo a {
+    display: none
+  }
+
+  .linksRolls {
+    width: auto;
+    height: 60px;
+    flex: 1
+  }
+
+  .linksRolls ul {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around
+  }
+
+  .linksRolls li {
+    width: auto;
+    height: 45px;
+    margin: 0;
+    padding: 8px
+  }
+
+  aside:hover .linksRolls li {
+    width: auto
+  }
+
+  .linksRolls span {
+    display: none !important;
+    opacity: 0 !important
+  }
+
+  .linksRolls svg {
+    width: 22px;
+    height: 22px;
+    min-width: 22px
+  }
+
+  .btnMore {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0
+  }
+
+  .linksRolls li:hover,
+  .btnMore:hover {
+    background-color: transparent
+  }
+
+  .logo {
+    display: none;
+  }
+
 }

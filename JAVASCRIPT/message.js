@@ -5,7 +5,7 @@
   const persona = document.querySelector("#persona");
 
 const usuario = JSON.parse(localStorage.getItem("usuarios"))
-persona.innerHTML =     `<span>${usuario[0].nome}</span>`
+persona.innerHTML = `<span>${usuario[0].nome}</span>`
 
 
   setTimeout(() => {

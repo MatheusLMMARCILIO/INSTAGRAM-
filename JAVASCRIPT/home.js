@@ -1,6 +1,4 @@
 //comment
-
-
 const like = document.querySelector(".btnLike");
 const comment = document.querySelector(".btnComment");
 const exitt = document.querySelector(".exitt");
@@ -9,6 +7,7 @@ const yes = document.getElementById("yes");
 const no = document.getElementById("no");
 const emptyPopup = document.querySelector("#emptyPopup");
 const okAlert = document.querySelector("#okAlert");
+const btnShare = document.querySelector(".btnShare");
 
 const Photoaaa = document.querySelector("#Photo");
 const postImh = Photoaaa.src;
@@ -21,9 +20,11 @@ const divModalComment = document.querySelector(".modalcomments");
 const postModal = document.querySelector(".postModal");
 
 //localStorage
-const reaction = localStorage.getItem("reaction");
-const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-const comentario = JSON.parse(localStorage.getItem("Commit")) || [];
+let compartilhamentos = Number(localStorage.getItem("share")) || 0;
+let compartilhou = localStorage.getItem("compartilhou") === "true";
+let reaction = localStorage.getItem("reaction");
+let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+let comentario = JSON.parse(localStorage.getItem("Commit")) || [];
 
 exitt.addEventListener("click", () => {
   divModalComment.style.display = "none";
@@ -53,6 +54,41 @@ function btnLike(button) {
     button.classList.toggle("liked");
 
     localStorage.setItem("reaction", button.classList.contains("liked"));
+  });
+}
+
+function share(btn) {
+  let compartilhamentos = Number(localStorage.getItem("share")) || 0;
+  let compartilhou = localStorage.getItem("compartilhou") === "true";
+
+  const spanEL = document.createElement("span");
+  spanEL.classList.add("SpanShare");
+  spanEL.textContent = compartilhamentos;
+
+  btn.appendChild(spanEL);
+
+  btn.addEventListener("click", () => {
+
+    if (!compartilhou) {
+      // COMPARTILHAR
+      compartilhamentos++;
+      compartilhou = true;
+
+    } else {
+      // UNSHARE
+      compartilhamentos--;
+
+      if (compartilhamentos < 0) {
+        compartilhamentos = 0;
+      }
+
+      compartilhou = false;
+    }
+
+    spanEL.textContent = compartilhamentos;
+
+    localStorage.setItem("share", compartilhamentos);
+    localStorage.setItem("compartilhou", compartilhou);
   });
 }
 
@@ -125,12 +161,12 @@ function createModalComment(post, name, perfil, user) {
     } else {
       comentario.push({
         texto: input.value,
-        nome: user,
+        nome: usuarios[0].nome,
       });
 
       localStorage.setItem("Commit", JSON.stringify(comentario));
 
-      addComment(input.value, elUlLista, user, comentario);
+      addComment(input.value, elUlLista, usuarios[0].nome, comentario);
     }
 
     input.value = "";
@@ -157,8 +193,6 @@ function createModalComment(post, name, perfil, user) {
 }
 
 function addComment(text, modal, nome, index) {
-
-
   const elLi = document.createElement("li");
 
   const allcommit = document.createElement("div");
@@ -218,84 +252,98 @@ btnComment(
   postImh,
   "mmatheuww",
   perfil,
-  usuarios[0].name,
+  usuarios[0].nome,
 );
+
+share(btnShare);
+
 
 // switch
 
-const you = document.querySelector(".you")
+const you = document.querySelector(".you");
 
-you.innerHTML = usuarios[0].name
+you.innerHTML = usuarios[0].nome;
 
+const modalSwitch = document.querySelector(".modalSwitch");
+const btnSwitch = document.querySelector(".btnCLassSwitch");
+const closeSwitch = document.querySelector(".switchCloseModal");
+
+btnSwitch.addEventListener("click", () => {
+  modalSwitch.style.display = "flex";
+});
+
+closeSwitch.addEventListener("click", () => {
+  modalSwitch.style.display = "none";
+});
 
 //create post
 
-const createNewModal = document.querySelector(".createNew")
-const modalCreatePost = document.querySelector(".createPostModal")
-const postCreateNow = document.querySelector(".postCreateNow")
-const fileImgBtn = document.querySelector("#imageInput")
-const btnCreatePost = document.querySelector(".createModal")
-const btnExitt = document.querySelector(".deleteModalPost")
-const newPossssst = document.querySelector(".btnPosta")
-const errorP = document.querySelector(".errorPhoto")
-const fileImage = document.querySelector("#FileImage")
-const PostUL = document.querySelector(".PostUL")
+const createNewModal = document.querySelector(".createNew");
+const modalCreatePost = document.querySelector(".createPostModal");
+const postCreateNow = document.querySelector(".postCreateNow");
+const fileImgBtn = document.querySelector("#imageInput");
+const btnCreatePost = document.querySelector(".createModal");
+const btnExitt = document.querySelector(".deleteModalPost");
+const newPossssst = document.querySelector(".btnPosta");
+const errorP = document.querySelector(".errorPhoto");
+const fileImage = document.querySelector("#FileImage");
+const PostUL = document.querySelector(".PostUL");
 
-let imagePhoto = null
-let postSave = JSON.parse(localStorage.getItem("post")) || []
+let imagePhoto = null;
+let postSave = JSON.parse(localStorage.getItem("post")) || [];
 
 btnCreatePost.addEventListener("click", () => {
-  modalCreatePost.style.display = "flex"
-})
+  modalCreatePost.style.display = "flex";
+});
 
 btnExitt.addEventListener("click", () => {
-  modalCreatePost.style.display = "none"
-})
+  modalCreatePost.style.display = "none";
+});
 
 fileImgBtn.addEventListener("change", () => {
-  const image = fileImgBtn.files[0]
+  const image = fileImgBtn.files[0];
   if (image) {
-    imagePhoto = image
-    createNewModal.style.display = "none"
-    postCreateNow.style.display = "flex"
-    fileImage.src = URL.createObjectURL(image)
+    imagePhoto = image;
+    createNewModal.style.display = "none";
+    postCreateNow.style.display = "flex";
+    fileImage.src = URL.createObjectURL(image);
   } else {
-    errorP.textContent = "Your image is corrupted or is not an image."
-    errorP.style.color = "red"
+    errorP.textContent = "Your image is corrupted or is not an image.";
+    errorP.style.color = "red";
   }
-})
+});
 
 function criarUrlDaImagem(file) {
   return new Promise((resolve, reject) => {
-    const reader = new FileReader()
-    reader.onload = () => resolve(reader.result)
-    reader.onerror = () => reject(reader.error)
-    reader.readAsDataURL(file)
-  })
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = () => reject(reader.error);
+    reader.readAsDataURL(file);
+  });
 }
 
 function excluirPost(index, elemento) {
-  postSave.splice(index, 1)
-  localStorage.setItem("post", JSON.stringify(postSave))
-  elemento.remove()
+  postSave.splice(index, 1);
+  localStorage.setItem("post", JSON.stringify(postSave));
+  elemento.remove();
 }
 
 function creatingANewPost(user, image, modal, index) {
-  const elLi = document.createElement("li")
-  const divPost = document.createElement("div")
-  divPost.classList.add("post")
+  const elLi = document.createElement("li");
+  const divPost = document.createElement("div");
+  divPost.classList.add("post");
 
-  const divMyself = document.createElement("div")
-  divMyself.classList.add("myself")
+  const divMyself = document.createElement("div");
+  divMyself.classList.add("myself");
 
-  const imgProfile = document.createElement("img")
-  imgProfile.src = "../../IMAGE/profileIcone.avif"
+  const imgProfile = document.createElement("img");
+  imgProfile.src = "../../IMAGE/profileIcone.avif";
 
-  const pProfile = document.createElement("p")
-  pProfile.textContent = user
+  const pProfile = document.createElement("p");
+  pProfile.textContent = user;
 
-  const btnDelete = document.createElement("button")
-  btnDelete.classList.add("deletePost")
+  const btnDelete = document.createElement("button");
+  btnDelete.classList.add("deletePost");
 
   btnDelete.innerHTML = `
     <svg aria-label="Delete" height="24" role="img" viewBox="0 0 24 24" width="24">
@@ -303,139 +351,131 @@ function creatingANewPost(user, image, modal, index) {
       <path d="M3 6h18" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
       <path d="M8 6V4h8v2M19 6l-1 15H6L5 6M10 10v7M14 10v7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
     </svg>
-  `
+  `;
 
   btnDelete.addEventListener("click", () => {
-    excluirPost(index, elLi)
-  })
+    excluirPost(index, elLi);
+  });
 
-  const postPhotoDiv = document.createElement("div")
-  postPhotoDiv.classList.add("postPhoto")
+  const postPhotoDiv = document.createElement("div");
+  postPhotoDiv.classList.add("postPhoto");
 
-  const postImage = document.createElement("img")
-  postImage.src = image
+  const postImage = document.createElement("img");
+  postImage.src = image;
 
-  const btnReacts = document.createElement("div")
-  btnReacts.classList.add("buttonsReaction")
+  const btnReacts = document.createElement("div");
+  btnReacts.classList.add("buttonsReaction");
 
-  const elulReacts = document.createElement("ul")
+  const elulReacts = document.createElement("ul");
 
-  const ellike = document.createElement("li")
-  ellike.classList.add("btnLike")
+  const ellike = document.createElement("li");
+  ellike.classList.add("btnLike");
 
   ellike.addEventListener("click", () => {
-    btnLike(ellike)
-  })
+    btnLike(ellike);
+  });
 
-  const svglike = document.createElement("div")
+  const svglike = document.createElement("div");
   svglike.innerHTML = `
     <svg aria-label="Like" height="24" role="img" viewBox="0 0 48 48" width="24">
       <title>Like</title>
       <path d="M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"></path>
     </svg>
-  `
+  `;
 
-  const elComment = document.createElement("li")
-  elComment.classList.add("btnComment")
+  const elComment = document.createElement("li");
+  elComment.classList.add("btnComment");
 
   elComment.addEventListener("click", () => {
-btnComment(
-  elComment,
-  divModalComment,
-  image,
-  user,
-  "../../IMAGE/profileIcone.avif",
-  usuarios[0].name
-)
-  })
+    btnComment(
+      elComment,
+      divModalComment,
+      image,
+      user,
+      "../../IMAGE/profileIcone.avif",
+      usuarios[0].nome,
+    );
+  });
 
-  const svgcomment = document.createElement("div")
+  const svgcomment = document.createElement("div");
   svgcomment.innerHTML = `
     <svg aria-label="Comment" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24">
       <title>Comment</title>
       <path d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
     </svg>
-  `
+  `;
 
-
-  const elshare = document.createElement("li")
-  elshare.classList.add("btnShare")
-
-  const svgshare = document.createElement("div")
+  const elshare = document.createElement("li");
+  elshare.classList.add("btnShare");
+share(elshare)
+  const svgshare = document.createElement("div");
   svgshare.innerHTML = `
     <svg aria-label="Repost" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24">
       <title>Repost</title>
       <path d="M19.998 9.497a1 1 0 0 0-1 1v4.228a3.274 3.274 0 0 1-3.27 3.27h-5.313l1.791-1.787a1 1 0 0 0-1.412-1.416L7.29 18.287a1.004 1.004 0 0 0-.294.707v.001c0 .023.012.042.013.065a.923.923 0 0 0 .281.643l3.502 3.504a1 1 0 0 0 1.414-1.414l-1.797-1.798h5.318a5.276 5.276 0 0 0 5.27-5.27v-4.228a1 1 0 0 0-1-1Zm-6.41-3.496-1.795 1.795a1 1 0 1 0 1.414 1.414l3.5-3.5a1.003 1.003 0 0 0 0-1.417l-3.5-3.5a1 1 0 0 0-1.414 1.414l1.794 1.794H8.27A5.277 5.277 0 0 0 3 9.271V13.5a1 1 0 0 0 2 0V9.271a3.275 3.275 0 0 1 3.271-3.27Z"></path>
     </svg>
-  `
+  `;
 
-  const elSend = document.createElement("li")
-  elSend.classList.add("btnSend")
+  
 
-  const svgsend = document.createElement("div")
+
+  const elSend = document.createElement("li");
+  elSend.classList.add("btnSend");
+
+  const svgsend = document.createElement("div");
   svgsend.innerHTML = `
     <svg aria-label="Share" fill="currentColor" height="24" role="img" viewBox="0 0 24 24" width="24">
       <title>Share</title>
       <path d="M13.973 20.046 21.77 6.928C22.8 5.195 21.55 3 19.535 3H4.466C2.138 3 .984 5.825 2.646 7.456l4.842 4.752 1.723 7.121c.548 2.266 3.571 2.721 4.762.717Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
       <line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="7.488" x2="15.515" y1="12.208" y2="7.641"></line>
     </svg>
-  `
+  `;
 
-  ellike.appendChild(svglike)
-  elComment.appendChild(svgcomment)
-  elshare.appendChild(svgshare)
-  elSend.appendChild(svgsend)
+  ellike.appendChild(svglike);
+  elComment.appendChild(svgcomment);
+  elshare.appendChild(svgshare);
+  elSend.appendChild(svgsend);
 
-  elulReacts.appendChild(ellike)
-  elulReacts.appendChild(elComment)
-  elulReacts.appendChild(elshare)
-  elulReacts.appendChild(elSend)
+  elulReacts.appendChild(ellike);
+  elulReacts.appendChild(elComment);
+  elulReacts.appendChild(elshare);
+  elulReacts.appendChild(elSend);
 
-  btnReacts.appendChild(elulReacts)
-  postPhotoDiv.appendChild(postImage)
+  btnReacts.appendChild(elulReacts);
+  postPhotoDiv.appendChild(postImage);
 
-  divMyself.appendChild(imgProfile)
-  divMyself.appendChild(pProfile)
-  divMyself.appendChild(btnDelete)
+  divMyself.appendChild(imgProfile);
+  divMyself.appendChild(pProfile);
+  divMyself.appendChild(btnDelete);
 
-  divPost.appendChild(divMyself)
-  divPost.appendChild(postPhotoDiv)
-  divPost.appendChild(btnReacts)
+  divPost.appendChild(divMyself);
+  divPost.appendChild(postPhotoDiv);
+  divPost.appendChild(btnReacts);
 
-  elLi.appendChild(divPost)
-  modal.appendChild(elLi)
+  elLi.appendChild(divPost);
+  modal.appendChild(elLi);
 }
 
 newPossssst.addEventListener("click", async () => {
   if (!imagePhoto) {
-    errorP.textContent = "Please select an image."
-    errorP.style.color = "red"
-    return
+    errorP.textContent = "Please select an image.";
+    errorP.style.color = "red";
+    return;
   }
 
-  const imagem = await criarUrlDaImagem(imagePhoto)
+  const imagem = await criarUrlDaImagem(imagePhoto);
 
-  postSave.push(imagem)
+  postSave.push(imagem);
 
-  localStorage.setItem("post", JSON.stringify(postSave))
+  localStorage.setItem("post", JSON.stringify(postSave));
 
-  creatingANewPost(
-    usuarios[0].name,
-    imagem,
-    PostUL,
-    postSave.length - 1
-  )
+  creatingANewPost(usuarios[0].nome, imagem, PostUL, postSave.length - 1);
 
-  imagePhoto = null
-  fileImgBtn.value = ""
-  modalCreatePost.style.display = "none"
-})
+  imagePhoto = null;
+  fileImgBtn.value = "";
+  modalCreatePost.style.display = "none";
+});
 
 postSave.forEach((post, index) => {
-  creatingANewPost(
-    usuarios[0].name,
-    post,
-    PostUL,
-    index
-  )
-})
+  creatingANewPost(usuarios[0].nome, post, PostUL, index);
+});
