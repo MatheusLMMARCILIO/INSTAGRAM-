@@ -28,8 +28,7 @@
 }
 
 .storys {
-  margin-top: 20px;
-  margin-left: 80px;
+  margin: 20px 10px 10px;
   width: 100%;
   height: 100px;
   max-width: 550px;
@@ -60,8 +59,9 @@ body.dark p {
 }
 
 .pagePost {
-  margin: 20px 0px;
+
   width: 100%;
+  height: 710px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -166,7 +166,7 @@ body.dark .buttonsReaction {
   height: 44px;
   display: flex;
   align-items: center;
-  padding: 0 20px;
+  margin: 10px 20px;
 
 }
 
@@ -202,10 +202,11 @@ body.dark .modal-header-user button {
 }
 
 .middle {
-  margin: 20px 10px 10px 10px;
+  margin: 10px;
 }
 
 .middle span {
+  font-size: 14px;
   color: var(--cinza);
   font-weight: 700;
 }
@@ -216,11 +217,57 @@ body.dark .middle span {
 
 .rigth {
   padding-top: 50px;
+  margin-left: 50px;
 }
 
 .post {
   margin: 20px 0px;
 }
+
+.feetInsta {
+  width: 100%;
+  height: auto;
+  margin: 0px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.feetInsta a {
+  font-size: 12px;
+  color: #6a717a;
+  text-decoration: none;
+  padding-right: 5px;
+}
+
+.feetInsta span {
+  font-size: 12px;
+  color: #6a717a;
+}
+
+.feetInsta ul {
+  margin-bottom: 15px;
+}
+
+.about:hover,
+.Help:hover,
+.Press:hover,
+.API:hover,
+.Jobs:hover,
+.Privacy:hover,
+.Terms:hover,
+.Locations:hover,
+.Language:hover {
+
+  text-decoration: underline;
+
+
+}
+
+.PostUL {
+  width: 100%;
+  height: 100%;
+}
+
 
 @media (max-width: 920px) {
   .rigth {
@@ -238,13 +285,9 @@ body.dark .middle span {
   }
 
   .storys {
-    padding: 0px 20px;
-    margin: 20px 0px;
+    margin: 0px 10px;
   }
 
-  .PostUL {
-    background-color: #0064e0;
-  }
 
   .myself {
     width: 100%;
