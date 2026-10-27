@@ -479,3 +479,18 @@ newPossssst.addEventListener("click", async () => {
 postSave.forEach((post, index) => {
   creatingANewPost(usuarios[0].nome, post, PostUL, index);
 });
+ 
+
+const btnFollowed = document.querySelector(".btnfollow");
+
+let followed = localStorage.getItem("followed") === "true";
+
+btnFollowed.textContent = followed ? "Following" : "Follow";
+
+btnFollowed.addEventListener("click", () => {
+  followed = !followed;
+
+  localStorage.setItem("followed", followed);
+
+  btnFollowed.textContent = followed ? "Following" : "Follow";
+});

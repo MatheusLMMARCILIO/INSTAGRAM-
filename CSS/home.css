@@ -80,24 +80,27 @@ body.dark p {
 
 .myself {
   width: 500px;
-  height: 50px;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding-left: 15px;
   border: none;
+  
 }
 
 .myself img {
   width: 35px;
   height: 32px;
   border-radius: 50px;
+  cursor: pointer;
 
 }
 
 .myself p {
   color: var(--preto);
   padding-left: 10px;
+  cursor: pointer;
 }
 
 body.dark .myself p {
